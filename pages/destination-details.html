@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hunza Valley — Destination Details | Highland Horizons</title>
+
+  <!-- Shared CSS dependencies (Bootstrap 5.3 before layout.css) -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/destination-details.css">
+</head>
+<body data-hh-active-page="destination-details">
+  <!-- Shared Header (dynamically refreshed by assets/js/layout.js over HTTP; fallback for file:// viewing) -->
+  <div id="site-header">
+    <header class="hh-header">
+      <nav class="navbar hh-navbar" aria-label="Main navigation">
+        <div class="hh-header-inner container-fluid">
+          <a
+            class="hh-brand text-decoration-none"
+            data-hh-page="home"
+            data-hh-href="#"
+            href="#"
+            title="Home (page path pending confirmation)"
+          >
+            <img
+              src="../assets/images/logo.svg"
+              data-hh-src="assets/images/logo.svg"
+              alt="Highland Horizons mountain logo"
+              class="hh-header-logo"
+            >
+            <span class="hh-brand-divider d-none d-lg-block" aria-hidden="true"></span>
+            <span class="hh-brand-text">
+              <span class="hh-brand-title">HIGHLAND <span class="d-block d-lg-inline">HORIZONS</span></span>
+              <span class="hh-brand-tagline d-none d-lg-block">FIND YOUR WAY NORTH</span>
+            </span>
+          </a>
+
+          <div class="hh-header-controls d-flex align-items-center">
+            <button
+              type="button"
+              class="hh-icon-btn hh-search-trigger"
+              aria-label="Toggle search"
+              aria-expanded="false"
+              aria-controls="hhSearchPanel"
+            >
+              <svg class="hh-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="7.5" stroke="currentColor" stroke-width="1.8" />
+                <line x1="16.2" y1="16.2" x2="21.5" y2="21.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </button>
+
+            <a
+              class="btn hh-signin-btn d-none d-md-inline-flex"
+              data-hh-page="login-signup"
+              data-hh-href="#"
+              href="#"
+            >Sign in</a>
+
+            <button
+              class="navbar-toggler hh-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#hhMainNav"
+              aria-controls="hhMainNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation menu"
+            >
+              <svg class="hh-hamburger-icon" viewBox="0 0 24 18" fill="none" aria-hidden="true">
+                <line x1="1" y1="2" x2="23" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="1" y1="9" x2="23" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="1" y1="16" x2="23" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="collapse navbar-collapse hh-nav-collapse" id="hhMainNav">
+            <div class="hh-nav-drawer">
+              <ul class="navbar-nav hh-nav-list">
+                <li class="nav-item">
+                  <a class="nav-link hh-nav-link" data-hh-page="home" data-hh-href="#" href="#">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle active"
+                    href="#"
+                    id="hhDestinationsDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span>Destinations</span>
+                    <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                      <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                  <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhDestinationsDropdown">
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="destinations" data-hh-href="pages/destinations.html" href="destinations.html">Destinations</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item active" aria-current="page" data-hh-page="destination-details" data-hh-href="pages/destination-details.html" href="destination-details.html">Destination Details</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="gallery" data-hh-href="#" href="#">Gallery</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="find-your-trip" data-hh-href="#" href="#">Find Your Trip</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+                    href="#"
+                    id="hhPackagesDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span>Tour Packages</span>
+                    <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                      <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                  <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhPackagesDropdown">
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="tour-packages" data-hh-href="#" href="#">Tour Packages</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="package-details" data-hh-href="#" href="#">Package Details</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="compare-packages" data-hh-href="#" href="#">Compare Packages</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+                    href="#"
+                    id="hhBookingDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span>Booking</span>
+                    <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                      <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                  <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhBookingDropdown">
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="booking" data-hh-href="#" href="#">Booking</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="price-calculator" data-hh-href="#" href="#">Price Calculator</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="booking-confirmation" data-hh-href="#" href="#">Booking Confirmation</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link hh-nav-link dropdown-toggle hh-dropdown-toggle"
+                    href="#"
+                    id="hhMoreDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span>More</span>
+                    <svg class="hh-chevron-icon" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                      <path d="M1.5 1.5L6 6L10.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                  <ul class="dropdown-menu hh-dropdown-menu" aria-labelledby="hhMoreDropdown">
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="about-us" data-hh-href="#" href="#">About Us</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="contact" data-hh-href="#" href="#">Contact</a></li>
+                    <li><a class="dropdown-item hh-dropdown-item" data-hh-page="reviews-faq" data-hh-href="#" href="#">Reviews &amp; FAQ</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+              <div class="hh-nav-actions d-md-none">
+                <a class="btn hh-signin-btn" data-hh-page="login-signup" data-hh-href="#" href="#">Sign in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="hh-search-panel" id="hhSearchPanel" hidden>
+        <div class="hh-search-inner container-fluid">
+          <form class="hh-search-form" role="search" novalidate>
+            <label for="hhSearchInput" class="visually-hidden">Search Highland Horizons</label>
+            <input
+              type="search"
+              id="hhSearchInput"
+              class="form-control hh-search-input"
+              placeholder="Search destinations or tour packages..."
+              autocomplete="off"
+            >
+            <button type="submit" class="btn hh-search-submit">Search</button>
+            <button type="button" class="btn hh-search-close" aria-label="Close search">&times;</button>
+          </form>
+          <p class="hh-search-status mb-0" id="hhSearchStatus" aria-live="polite" hidden></p>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <!-- 1. Hero Section -->
+    <section class="hh-detail-hero" aria-labelledby="heroHeading">
+      <img
+        src="../assets/images/hunza.jpg"
+        alt="Turquoise river winding past steep mountains, tall green trees, and a bridge in Hunza Valley"
+        class="hh-detail-hero-img"
+      >
+      <div class="hh-detail-hero-overlay" aria-hidden="true"></div>
+      <div class="hh-detail-hero-content">
+        <h1 id="heroHeading" class="hh-detail-hero-title">Hunza Valley</h1>
+        <p class="hh-detail-hero-subtitle">Where nature meets peace</p>
+      </div>
+    </section>
+
+    <div class="hh-detail-content">
+      <div class="container hh-detail-container">
+        <nav class="hh-back-nav" aria-label="Breadcrumb">
+          <a href="destinations.html" class="hh-back-link">&larr; Back to Destinations</a>
+        </nav>
+
+        <!-- 2. About Hunza -->
+        <section class="hh-detail-section" aria-labelledby="aboutHunzaHeading">
+          <div class="hh-section-header">
+            <h2 id="aboutHunzaHeading" class="hh-section-title">About Hunza</h2>
+          </div>
+
+          <div class="hh-about-card">
+            <p class="hh-about-text">
+              Nestled in the Karakoram mountains of Gilgit-Baltistan, Hunza Valley is renowned for its
+              snow-dusted peaks, bright turquoise waters, and serene terraced villages. Framed by towering
+              mountains such as Rakaposhi and Ultar Sar, the valley shifts gently with the seasons — from
+              blossoming apricot orchards in spring to crisp golden leaves in autumn.
+            </p>
+            <p class="hh-about-text">
+              Along with its dramatic landscapes, Hunza is cherished for its welcoming local communities,
+              historic hillside forts, and rich northern heritage. Whether you are admiring sunrise over
+              jagged ridges or strolling along peaceful stone pathways, Hunza offers a timeless sense of calm.
+            </p>
+          </div>
+        </section>
+
+        <!-- 3. Quick Information -->
+        <section class="hh-detail-section" aria-labelledby="quickInfoHeading">
+          <div class="hh-section-header">
+            <h2 id="quickInfoHeading" class="hh-section-title">Quick Information</h2>
+          </div>
+
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+              <div class="hh-info-card">
+                <div class="hh-info-icon-box" aria-hidden="true">
+                  <svg class="hh-info-icon" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="4.5" width="18" height="16.5" rx="2" stroke="currentColor" stroke-width="1.8" />
+                    <line x1="3" y1="9.5" x2="21" y2="9.5" stroke="currentColor" stroke-width="1.8" />
+                    <line x1="8" y1="2.5" x2="8" y2="6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                    <line x1="16" y1="2.5" x2="16" y2="6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="hh-info-label">Best Time to Visit</span>
+                  <h3 class="hh-info-value">Spring / Summer</h3>
+                  <p class="hh-info-note">
+                    Ideal months for clear mountain views, apricot blossoms, and open highland roads.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="hh-info-card">
+                <div class="hh-info-icon-box" aria-hidden="true">
+                  <svg class="hh-info-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 21C12 21 18.5 14.5 18.5 9.5C18.5 5.91015 15.5899 3 12 3C8.41015 3 5.5 5.91015 5.5 9.5C5.5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.8" />
+                    <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="hh-info-label">Region</span>
+                  <h3 class="hh-info-value">Gilgit-Baltistan</h3>
+                  <p class="hh-info-note">
+                    Located in Northern Pakistan along the scenic Karakoram Highway.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Places to Explore -->
+        <section class="hh-detail-section" aria-labelledby="placesToExploreHeading">
+          <div class="hh-section-header">
+            <h2 id="placesToExploreHeading" class="hh-section-title">Places to Explore</h2>
+          </div>
+
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Place 1: Attabad Lake -->
+            <div class="col">
+              <article class="hh-place-card">
+                <div class="hh-place-media">
+                  <svg
+                    class="hh-place-illustration"
+                    viewBox="0 0 400 240"
+                    preserveAspectRatio="xMidYMid slice"
+                    role="img"
+                    aria-label="Scenic illustration of Attabad Lake with bright turquoise water between steep mountains"
+                  >
+                    <rect width="400" height="240" fill="#D5E7F2" />
+                    <path d="M0 135 L85 45 L165 115 L255 38 L345 105 L400 72 L400 155 L0 155 Z" fill="#8C9C89" />
+                    <path d="M0 150 L70 72 L145 135 L235 65 L320 130 L400 95 L400 165 L0 165 Z" fill="#3F4F3A" />
+                    <path d="M0 150 Q120 142 215 152 T400 148 L400 240 L0 240 Z" fill="#3B9AB2" />
+                    <path d="M30 180 Q135 173 245 182 T390 176" stroke="#A7C7E7" stroke-width="3" fill="none" stroke-linecap="round" />
+                    <path d="M70 206 Q190 198 310 208" stroke="#F8F6ED" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7" />
+                    <path d="M168 173 L218 173 L208 182 L176 182 Z" fill="#C97B3D" />
+                    <line x1="193" y1="158" x2="193" y2="173" stroke="#1B5E3B" stroke-width="2" />
+                    <polygon points="193,158 209,166 193,169" fill="#F8F6ED" />
+                  </svg>
+                </div>
+                <div class="hh-place-body">
+                  <h3 class="hh-place-title">Attabad Lake</h3>
+                  <p class="hh-place-desc">
+                    Famous for its vivid turquoise water surrounded by dramatic rocky cliffs, offering quiet boat rides and unforgettable mountain reflections.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Place 2: Passu Cones -->
+            <div class="col">
+              <article class="hh-place-card">
+                <div class="hh-place-media">
+                  <svg
+                    class="hh-place-illustration"
+                    viewBox="0 0 400 240"
+                    preserveAspectRatio="xMidYMid slice"
+                    role="img"
+                    aria-label="Scenic illustration of Passu Cones jagged mountain spires above green valley trees"
+                  >
+                    <rect width="400" height="240" fill="#CFE4F2" />
+                    <circle cx="325" cy="54" r="22" fill="#F8F6ED" opacity="0.9" />
+                    <polygon points="15,175 72,64 125,175" fill="#4A5D46" />
+                    <polygon points="75,175 142,32 205,175" fill="#3F4F3A" />
+                    <polygon points="145,175 212,24 275,175" fill="#2F422D" />
+                    <polygon points="220,175 282,52 342,175" fill="#3F4F3A" />
+                    <polygon points="288,175 348,74 398,175" fill="#586B53" />
+                    <polygon points="142,32 128,62 142,56 155,64" fill="#F8F6ED" />
+                    <polygon points="212,24 196,58 212,50 228,60" fill="#F8F6ED" />
+                    <polygon points="282,52 269,78 282,72 295,80" fill="#F8F6ED" />
+                    <path d="M0 168 Q130 154 250 168 T400 162 L400 240 L0 240 Z" fill="#A7C957" />
+                    <path d="M0 185 Q180 174 400 188 L400 240 L0 240 Z" fill="#1B5E3B" />
+                    <path d="M60 240 Q150 205 240 190 Q285 182 335 178" stroke="#D9B382" stroke-width="8" fill="none" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="hh-place-body">
+                  <h3 class="hh-place-title">Passu Cones</h3>
+                  <p class="hh-place-desc">
+                    Iconic cathedral-shaped mountain peaks rising sharply above Upper Hunza, best admired along the Karakoram Highway near Passu village.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <!-- Place 3: Karimabad -->
+            <div class="col">
+              <article class="hh-place-card">
+                <div class="hh-place-media">
+                  <svg
+                    class="hh-place-illustration"
+                    viewBox="0 0 400 240"
+                    preserveAspectRatio="xMidYMid slice"
+                    role="img"
+                    aria-label="Scenic illustration of Karimabad town and historic stone fort beneath snowy peaks"
+                  >
+                    <rect width="400" height="240" fill="#DCE9F2" />
+                    <path d="M0 140 L95 55 L195 118 L295 36 L400 120 L400 165 L0 165 Z" fill="#899B87" />
+                    <polygon points="295,36 266,68 295,60 326,70" fill="#F8F6ED" />
+                    <path d="M0 148 Q160 125 270 145 L400 135 L400 240 L0 240 Z" fill="#6F8C58" />
+                    <path d="M0 182 Q190 168 400 184 L400 240 L0 240 Z" fill="#A7C957" />
+                    <!-- Historic hillside fort silhouette -->
+                    <rect x="148" y="96" width="104" height="50" rx="2" fill="#F8F6ED" stroke="#3F4F3A" stroke-width="2" />
+                    <rect x="138" y="108" width="24" height="38" fill="#D9B382" stroke="#3F4F3A" stroke-width="2" />
+                    <rect x="238" y="108" width="24" height="38" fill="#D9B382" stroke="#3F4F3A" stroke-width="2" />
+                    <rect x="184" y="80" width="32" height="18" fill="#C97B3D" />
+                    <rect x="166" y="112" width="14" height="16" fill="#3F4F3A" />
+                    <rect x="193" y="112" width="14" height="16" fill="#3F4F3A" />
+                    <rect x="220" y="112" width="14" height="16" fill="#3F4F3A" />
+                    <circle cx="80" cy="196" r="14" fill="#1B5E3B" />
+                    <circle cx="105" cy="202" r="11" fill="#1B5E3B" />
+                    <circle cx="318" cy="194" r="15" fill="#1B5E3B" />
+                  </svg>
+                </div>
+                <div class="hh-place-body">
+                  <h3 class="hh-place-title">Karimabad</h3>
+                  <p class="hh-place-desc">
+                    The lively cultural heart of Hunza, home to historic Baltit Fort, cozy craft bazaars, and panoramic viewpoints overlooking Rakaposhi.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Things to Do -->
+        <section class="hh-detail-section" aria-labelledby="thingsToDoHeading">
+          <div class="hh-section-header">
+            <h2 id="thingsToDoHeading" class="hh-section-title">Things to Do</h2>
+          </div>
+
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="hh-activity-card">
+                <div class="hh-activity-icon-box" aria-hidden="true">
+                  <svg class="hh-activity-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 19L9 10L13.5 16L16.5 12L21 19H3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    <circle cx="17" cy="7" r="2" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </div>
+                <h3 class="hh-activity-title">Sightseeing</h3>
+                <p class="hh-activity-desc">
+                  Take in sweeping views of snow-covered peaks, glacial valleys, and terraced apricot orchards.
+                </p>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="hh-activity-card">
+                <div class="hh-activity-icon-box" aria-hidden="true">
+                  <svg class="hh-activity-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 8.5C4 7.67157 4.67157 7 5.5 7H8L9.5 5H14.5L16 7H18.5C19.3284 7 20 7.67157 20 8.5V17.5C20 18.3284 19.3284 19 18.5 19H5.5C4.67157 19 4 18.3284 4 17.5V8.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    <circle cx="12" cy="13" r="3.2" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </div>
+                <h3 class="hh-activity-title">Photography</h3>
+                <p class="hh-activity-desc">
+                  Capture golden hour light on the Passu Cones, turquoise reflections at Attabad Lake, and starlit mountain skies.
+                </p>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="hh-activity-card">
+                <div class="hh-activity-icon-box" aria-hidden="true">
+                  <svg class="hh-activity-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 20V10L12 4L20 10V20H4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                    <path d="M9.5 20V14H14.5V20" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <h3 class="hh-activity-title">Exploring local culture</h3>
+                <p class="hh-activity-desc">
+                  Visit heritage forts, browse handmade crafts in Karimabad, and experience warm local hospitality and traditional dishes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Gallery Button (placeholder href="#" until pages/gallery.html is created) -->
+        <section class="hh-gallery-cta" aria-label="Hunza Valley gallery link">
+          <a
+            id="hunzaGalleryLink"
+            href="#"
+            data-hh-page="gallery"
+            class="btn hh-gallery-btn"
+            title="Gallery page link — update href once pages/gallery.html is created"
+          >
+            View Hunza Gallery &rarr;
+          </a>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared Footer (dynamically refreshed by assets/js/layout.js over HTTP; fallback for file:// viewing) -->
+  <div id="site-footer">
+    <footer class="hh-footer">
+      <div class="hh-footer-inner container-fluid">
+        <div class="row hh-footer-grid g-0">
+          <div class="col-12 col-lg-3 hh-footer-col hh-footer-brand-col">
+            <a
+              class="hh-footer-brand text-decoration-none d-inline-block"
+              data-hh-page="home"
+              data-hh-href="#"
+              href="#"
+              title="Home (page path pending confirmation)"
+            >
+              <img
+                src="../assets/images/logo.svg"
+                data-hh-src="assets/images/logo.svg"
+                alt="Highland Horizons mountain logo"
+                class="hh-footer-logo"
+              >
+              <span class="hh-footer-brand-title d-block">HIGHLAND<br>HORIZONS</span>
+            </a>
+            <p class="hh-footer-description mb-0">
+              Thoughtful journeys through<br>
+              the mountains of Northern Pakistan.
+            </p>
+          </div>
+
+          <div class="col-6 col-lg-3 hh-footer-col hh-footer-divided-col hh-footer-explore-col">
+            <h2 class="hh-footer-heading">EXPLORE</h2>
+            <ul class="list-unstyled hh-footer-links mb-0">
+              <li><a data-hh-page="home" data-hh-href="#" href="#">Home</a></li>
+              <li><a data-hh-page="destinations" data-hh-href="pages/destinations.html" href="destinations.html">Destinations</a></li>
+              <li><a data-hh-page="destination-details" data-hh-href="pages/destination-details.html" href="destination-details.html">Destination Details</a></li>
+              <li><a data-hh-page="gallery" data-hh-href="#" href="#">Gallery</a></li>
+              <li><a data-hh-page="find-your-trip" data-hh-href="#" href="#">Find Your Trip</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-3 hh-footer-col hh-footer-divided-col hh-footer-packages-col">
+            <h2 class="hh-footer-heading">PACKAGES &amp; BOOKING</h2>
+            <ul class="list-unstyled hh-footer-links mb-0">
+              <li><a data-hh-page="tour-packages" data-hh-href="#" href="#">Tour Packages</a></li>
+              <li><a data-hh-page="package-details" data-hh-href="#" href="#">Package Details</a></li>
+              <li><a data-hh-page="compare-packages" data-hh-href="#" href="#">Compare Packages</a></li>
+              <li><a data-hh-page="booking" data-hh-href="#" href="#">Booking</a></li>
+              <li><a data-hh-page="price-calculator" data-hh-href="#" href="#">Price Calculator</a></li>
+              <li><a data-hh-page="booking-confirmation" data-hh-href="#" href="#">Booking Confirmation</a></li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-lg-3 hh-footer-col hh-footer-divided-col hh-footer-contact-col">
+            <h2 class="hh-footer-heading">INFORMATION &amp; CONTACT</h2>
+            <ul class="list-unstyled hh-footer-links mb-3">
+              <li><a data-hh-page="about-us" data-hh-href="#" href="#">About Us</a></li>
+              <li><a data-hh-page="contact" data-hh-href="#" href="#">Contact</a></li>
+              <li><a data-hh-page="reviews-faq" data-hh-href="#" href="#">Reviews &amp; FAQ</a></li>
+            </ul>
+
+            <ul class="list-unstyled hh-footer-contact-list mb-0">
+              <li class="hh-contact-emails-row">
+                <svg class="hh-contact-icon hh-contact-email-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="2.5" y="5" width="19" height="14" rx="1.5" stroke="currentColor" stroke-width="1.6" />
+                  <path d="M3 6L12 13L21 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <ul class="list-unstyled hh-contact-email-list mb-0">
+                  <li><a href="mailto:i263255@isb.nu.edu.pk" class="hh-contact-item">i263255@isb.nu.edu.pk</a></li>
+                  <li><a href="mailto:i263258@isb.nu.edu.pk" class="hh-contact-item">i263258@isb.nu.edu.pk</a></li>
+                  <li><a href="mailto:i263228@isb.nu.edu.pk" class="hh-contact-item">i263228@isb.nu.edu.pk</a></li>
+                  <li><a href="mailto:i263279@isb.nu.edu.pk" class="hh-contact-item">i263279@isb.nu.edu.pk</a></li>
+                  <li><a href="mailto:i263246@isb.nu.edu.pk" class="hh-contact-item">i263246@isb.nu.edu.pk</a></li>
+                </ul>
+              </li>
+              <li>
+                <span class="hh-contact-item">
+                  <svg class="hh-contact-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 21C12 21 18.5 14.5 18.5 9.5C18.5 5.91015 15.5899 3 12 3C8.41015 3 5.5 5.91015 5.5 9.5C5.5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" />
+                    <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6" />
+                  </svg>
+                  <span>Islamabad, Pakistan</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="hh-footer-bottom-rule">
+
+        <p class="hh-footer-copyright mb-0">&copy; 2026 Highland Horizons</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Shared JavaScript dependencies -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="../assets/js/layout.js"></script>
+</body>
+</html>
