@@ -52,19 +52,115 @@
         </p>
       </header>
 
+      <!-- Package Selection Cards -->
+      <section class="hh-package-selector" aria-labelledby="packageSelectorHeading">
+        <div class="hh-selector-header">
+          <h2 class="hh-selector-heading" id="packageSelectorHeading">Choose Your Expedition Package</h2>
+          <p class="hh-selector-hint mb-0">Select a destination below or from the form dropdown</p>
+        </div>
+        <div class="row g-3" role="group" aria-label="Tour packages">
+          <div class="col-6 col-md-3">
+            <button
+              type="button"
+              class="hh-pkg-option-card is-selected"
+              data-package-id="hunza"
+              aria-pressed="true"
+            >
+              <div class="hh-pkg-thumb">
+                <img
+                  src="assets/images/hunza.jpg"
+                  alt="Hunza Valley mountains and terraced orchards"
+                  class="hh-pkg-thumb-img"
+                >
+                <span class="hh-pkg-thumb-fallback" aria-hidden="true">Hunza</span>
+              </div>
+              <div class="hh-pkg-option-info">
+                <span class="hh-pkg-option-name">Hunza</span>
+                <span class="hh-pkg-option-meta">5 Days &middot; PKR 67,500</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <button
+              type="button"
+              class="hh-pkg-option-card"
+              data-package-id="skardu"
+              aria-pressed="false"
+            >
+              <div class="hh-pkg-thumb">
+                <img
+                  src="assets/images/skardu.jpg"
+                  alt="Skardu Valley alpine lakes and peaks"
+                  class="hh-pkg-thumb-img"
+                >
+                <span class="hh-pkg-thumb-fallback" aria-hidden="true">Skardu</span>
+              </div>
+              <div class="hh-pkg-option-info">
+                <span class="hh-pkg-option-name">Skardu</span>
+                <span class="hh-pkg-option-meta">7 Days &middot; PKR 101,500</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <button
+              type="button"
+              class="hh-pkg-option-card"
+              data-package-id="fairy-meadows"
+              aria-pressed="false"
+            >
+              <div class="hh-pkg-thumb">
+                <img
+                  src="assets/images/fairymeadows.jpg"
+                  alt="Fairy Meadows pine forest facing Nanga Parbat"
+                  class="hh-pkg-thumb-img"
+                >
+                <span class="hh-pkg-thumb-fallback" aria-hidden="true">Fairy Meadows</span>
+              </div>
+              <div class="hh-pkg-option-info">
+                <span class="hh-pkg-option-name">Fairy Meadows</span>
+                <span class="hh-pkg-option-meta">4 Days &middot; PKR 48,000</span>
+              </div>
+            </button>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <button
+              type="button"
+              class="hh-pkg-option-card"
+              data-package-id="shogran"
+              aria-pressed="false"
+            >
+              <div class="hh-pkg-thumb">
+                <img
+                  src="assets/images/shogran.jpg"
+                  alt="Shogran cedar hills and Siri Paye meadows"
+                  class="hh-pkg-thumb-img"
+                >
+                <span class="hh-pkg-thumb-fallback" aria-hidden="true">Shogran</span>
+              </div>
+              <div class="hh-pkg-option-info">
+                <span class="hh-pkg-option-name">Shogran</span>
+                <span class="hh-pkg-option-meta">3 Days &middot; PKR 31,500</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
       <!-- Two-Column Responsive Layout -->
       <div class="row g-4 align-items-stretch">
         <!-- Left Column: Package Visual Card -->
         <div class="col-12 col-lg-5">
           <aside class="hh-package-card" aria-label="Selected tour package summary">
             <div class="hh-package-visual">
-              <!-- Custom scenic vector illustration of Hunza Valley peaks -->
+              <!-- Scenic mountain fallback backdrop behind package photo -->
               <svg
                 class="hh-package-artwork"
                 viewBox="0 0 640 400"
                 preserveAspectRatio="xMidYMid slice"
-                role="img"
-                aria-label="Scenic illustration of Hunza Valley mountains, turquoise river, and alpine meadows"
+                aria-hidden="true"
               >
                 <defs>
                   <linearGradient id="hhSkyGrad" x1="0" y1="0" x2="0" y2="1">
@@ -77,30 +173,20 @@
                     <stop offset="100%" stop-color="#D9B382" />
                   </linearGradient>
                 </defs>
-
-                <!-- Sky & Warm Sun -->
                 <rect width="640" height="400" fill="url(#hhSkyGrad)" />
                 <circle cx="505" cy="95" r="42" fill="url(#hhSunGrad)" opacity="0.92" />
-
-                <!-- Distant Karakoram Ridge -->
                 <path
                   d="M0 245 L95 145 L175 198 L275 98 L365 178 L455 112 L545 186 L640 132 L640 400 L0 400 Z"
                   fill="#8BAFC9"
                   opacity="0.72"
                 />
-                <!-- Snow Caps on Distant Peaks -->
                 <path d="M275 98 L244 138 L266 132 L279 144 L296 130 L312 138 Z" fill="#F8F6ED" />
                 <path d="M455 112 L426 146 L445 141 L459 152 L474 140 L487 146 Z" fill="#F8F6ED" />
-                <path d="M95 145 L72 175 L89 170 L98 179 L112 168 L122 175 Z" fill="#F8F6ED" />
-
-                <!-- Midground Forested Slopes -->
                 <path
                   d="M0 275 L125 210 L245 268 L385 198 L515 256 L640 212 L640 400 L0 400 Z"
                   fill="#1B5E3B"
                   opacity="0.88"
                 />
-
-                <!-- Terraced Hunza Valley Hills -->
                 <path
                   d="M0 305 Q175 268 335 312 T640 292 L640 400 L0 400 Z"
                   fill="#3F4F3A"
@@ -110,31 +196,24 @@
                   fill="#A7C957"
                   opacity="0.85"
                 />
-
-                <!-- Winding Hunza River -->
-                <path
-                  d="M342 308 C300 328 380 348 292 372 C248 384 235 392 222 400 L310 400 C328 386 355 372 388 352 C422 332 376 318 356 306 Z"
-                  fill="#A7C7E7"
-                />
-
-                <!-- Stylized Pine Silhouettes -->
-                <g fill="#1B5E3B">
-                  <polygon points="56,356 68,318 80,356" />
-                  <polygon points="84,362 98,312 112,362" />
-                  <polygon points="546,354 560,308 574,354" />
-                  <polygon points="576,360 588,322 600,360" />
-                </g>
               </svg>
 
+              <img
+                id="selectedPackageImage"
+                class="hh-package-photo"
+                src="assets/images/hunza.jpg"
+                alt="Hunza Valley mountains and terraced orchards"
+              >
+
               <div class="hh-package-badges">
-                <span class="hh-badge-featured">Signature Expedition</span>
-                <span class="hh-badge-duration">5 Days / 4 Nights</span>
+                <span class="hh-badge-featured" id="selectedPackageBadge">Signature Expedition</span>
+                <span class="hh-badge-duration" id="selectedPackageDurationBadge">5 Days</span>
               </div>
             </div>
 
             <div class="hh-package-body">
-              <span class="hh-package-location">Gilgit-Baltistan &middot; Northern Pakistan</span>
-              <h2 class="hh-package-name">Hunza Valley Explorer</h2>
+              <span class="hh-package-location" id="selectedPackageLocation">Gilgit-Baltistan &middot; Northern Pakistan</span>
+              <h2 class="hh-package-name" id="selectedPackageName">Hunza</h2>
 
               <div class="hh-package-meta">
                 <span class="hh-meta-chip">
@@ -142,23 +221,23 @@
                     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
                     <path d="M12 7V12L15.5 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                   </svg>
-                  5 days / 4 nights
+                  <span id="selectedPackageDurationMeta">5 Days / 4 Nights</span>
                 </span>
                 <span class="hh-meta-chip">
                   <svg class="hh-meta-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M12 21C12 21 18.5 14.5 18.5 9.5C18.5 5.91 15.59 3 12 3C8.41 3 5.5 5.91 5.5 9.5C5.5 14.5 12 21 12 21Z" stroke="currentColor" stroke-width="1.8" />
                     <circle cx="12" cy="9.5" r="2.2" stroke="currentColor" stroke-width="1.8" />
                   </svg>
-                  Karimabad &amp; Upper Hunza
+                  <span id="selectedPackagePlaceMeta">Karimabad &amp; Upper Hunza</span>
                 </span>
               </div>
 
-              <p class="hh-package-description">
+              <p class="hh-package-description" id="selectedPackageDescription">
                 Journey along the Karakoram Highway into terraced apricot orchards, turquoise glacial lakes,
                 and centuries-old mountain fortresses framed by Rakaposhi and Ultar Sar.
               </p>
 
-              <ul class="hh-package-highlights">
+              <ul class="hh-package-highlights" id="selectedPackageHighlights">
                 <li>
                   <svg class="hh-highlight-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -181,9 +260,9 @@
 
               <div class="hh-package-price-box">
                 <div>
-                  <span class="hh-price-label">Starting Package Rate</span>
+                  <span class="hh-price-label">Base Package Rate</span>
                   <div class="hh-price-amount">
-                    PKR 45,000 <span class="hh-price-unit">per person</span>
+                    <span id="selectedPackagePrice">PKR 67,500</span> <span class="hh-price-unit">per person</span>
                   </div>
                 </div>
               </div>
@@ -215,6 +294,26 @@
 
             <form id="bookingForm" novalidate>
               <div class="row g-3">
+                <!-- Tour Package Dropdown -->
+                <div class="col-12">
+                  <label for="tourPackage" class="form-label hh-form-label">
+                    Tour Package <span class="hh-required-mark" aria-hidden="true">*</span>
+                  </label>
+                  <select
+                    class="form-select hh-select"
+                    id="tourPackage"
+                    name="package"
+                    required
+                    aria-describedby="tourPackageError"
+                  >
+                    <option value="hunza">Hunza &mdash; 5 Days (PKR 67,500 / person)</option>
+                    <option value="skardu">Skardu &mdash; 7 Days (PKR 101,500 / person)</option>
+                    <option value="fairy-meadows">Fairy Meadows &mdash; 4 Days (PKR 48,000 / person)</option>
+                    <option value="shogran">Shogran &mdash; 3 Days (PKR 31,500 / person)</option>
+                  </select>
+                  <div class="hh-field-error" id="tourPackageError" hidden></div>
+                </div>
+
                 <!-- Full Name -->
                 <div class="col-12">
                   <label for="fullName" class="form-label hh-form-label">
@@ -368,15 +467,93 @@
       "use strict";
 
       var STORAGE_KEY = "hhBookingData";
-      var PACKAGE_DETAILS = {
-        name: "Hunza Valley Explorer",
-        duration: "5 days / 4 nights",
-        pricePerPerson: 45000,
-        currency: "PKR"
+      var PACKAGES = {
+        hunza: {
+          id: "hunza",
+          name: "Hunza",
+          duration: "5 Days",
+          durationDetail: "5 Days / 4 Nights",
+          pricePerPerson: 67500,
+          currency: "PKR",
+          image: "assets/images/hunza.jpg",
+          imageAlt: "Hunza Valley mountains and terraced orchards",
+          badge: "Signature Expedition",
+          location: "Gilgit-Baltistan \u00b7 Northern Pakistan",
+          placeMeta: "Karimabad & Upper Hunza",
+          description:
+            "Journey along the Karakoram Highway into terraced apricot orchards, turquoise glacial lakes, and centuries-old mountain fortresses framed by Rakaposhi and Ultar Sar.",
+          highlights: [
+            "Guided heritage walks through Baltit & Altit Forts",
+            "Attabad Lake boat excursion & Passu Cones viewpoint",
+            "4 nights eco-lodge stays with daily breakfast included"
+          ]
+        },
+        skardu: {
+          id: "skardu",
+          name: "Skardu",
+          duration: "7 Days",
+          durationDetail: "7 Days / 6 Nights",
+          pricePerPerson: 101500,
+          currency: "PKR",
+          image: "assets/images/skardu.jpg",
+          imageAlt: "Skardu Valley alpine lakes and peaks",
+          badge: "Grand Alpine Tour",
+          location: "Baltistan \u00b7 Northern Pakistan",
+          placeMeta: "Skardu, Shigar & Deosai Plains",
+          description:
+            "Traverse high-altitude plateaus and mirror-still alpine lakes from Shangrila and Upper Kachura to the wildflower expanses of Deosai National Park.",
+          highlights: [
+            "Deosai National Park & Sheosar Lake full-day excursion",
+            "Upper Kachura Lake, Cold Desert & Shigar Fort tour",
+            "6 nights mountain resort stays with daily breakfast included"
+          ]
+        },
+        "fairy-meadows": {
+          id: "fairy-meadows",
+          name: "Fairy Meadows",
+          duration: "4 Days",
+          durationDetail: "4 Days / 3 Nights",
+          pricePerPerson: 48000,
+          currency: "PKR",
+          image: "assets/images/fairymeadows.jpg",
+          imageAlt: "Fairy Meadows pine forest facing Nanga Parbat",
+          badge: "Trekker's Choice",
+          location: "Diamer \u00b7 Nanga Parbat Base",
+          placeMeta: "Raikot, Fairy Meadows & Beyal",
+          description:
+            "Ride a thrilling mountain jeep track from Raikot Bridge and hike through fragrant pine forests to camp beneath the towering Rupal and Diamir walls of Nanga Parbat.",
+          highlights: [
+            "Raikot Bridge to Tattu mountain jeep transfer included",
+            "Guided alpine trail walk to Beyal Camp viewpoint",
+            "3 nights wooden cabin & alpine camp stays with breakfast"
+          ]
+        },
+        shogran: {
+          id: "shogran",
+          name: "Shogran",
+          duration: "3 Days",
+          durationDetail: "3 Days / 2 Nights",
+          pricePerPerson: 31500,
+          currency: "PKR",
+          image: "assets/images/shogran.jpg",
+          imageAlt: "Shogran cedar hills and Siri Paye meadows",
+          badge: "Weekend Getaway",
+          location: "Kaghan Valley \u00b7 Khyber Pakhtunkhwa",
+          placeMeta: "Shogran & Siri Paye Meadows",
+          description:
+            "Unwind amidst lush cedar forests and rolling emerald meadows in Kaghan Valley with sweeping views of Makra Peak and crisp alpine air.",
+          highlights: [
+            "4x4 jeep excursion to Siri Paye alpine meadows",
+            "Panoramic viewpoints facing Makra Peak & Malika Parbat",
+            "2 nights hillside chalet accommodation with breakfast"
+          ]
+        }
       };
 
       var form = document.getElementById("bookingForm");
       var alertBanner = document.getElementById("bookingFormAlert");
+      var packageSelect = document.getElementById("tourPackage");
+      var packageCards = document.querySelectorAll(".hh-pkg-option-card[data-package-id]");
       var fullNameInput = document.getElementById("fullName");
       var emailInput = document.getElementById("emailAddress");
       var phoneInput = document.getElementById("phoneNumber");
@@ -384,9 +561,123 @@
       var travellerSelect = document.getElementById("travellerCount");
       var specialRequestsInput = document.getElementById("specialRequests");
 
-      if (!form) {
+      var previewImg = document.getElementById("selectedPackageImage");
+      var previewBadge = document.getElementById("selectedPackageBadge");
+      var previewDurationBadge = document.getElementById("selectedPackageDurationBadge");
+      var previewLocation = document.getElementById("selectedPackageLocation");
+      var previewName = document.getElementById("selectedPackageName");
+      var previewDurationMeta = document.getElementById("selectedPackageDurationMeta");
+      var previewPlaceMeta = document.getElementById("selectedPackagePlaceMeta");
+      var previewDescription = document.getElementById("selectedPackageDescription");
+      var previewHighlights = document.getElementById("selectedPackageHighlights");
+      var previewPrice = document.getElementById("selectedPackagePrice");
+
+      if (!form || !packageSelect) {
         return;
       }
+
+      var currentPackageId = "hunza";
+      var savedAddons = null;
+
+      function formatPkr(amount) {
+        return "PKR " + Number(amount).toLocaleString("en-US");
+      }
+
+      function normalizePackageKey(rawValue) {
+        if (!rawValue) return null;
+        var normalized = String(rawValue).trim().toLowerCase().replace(/\s+/g, "-");
+        if (PACKAGES[normalized]) return normalized;
+        if (normalized.indexOf("hunza") !== -1) return "hunza";
+        if (normalized.indexOf("skardu") !== -1) return "skardu";
+        if (normalized.indexOf("fairy") !== -1) return "fairy-meadows";
+        if (normalized.indexOf("shogran") !== -1) return "shogran";
+        return null;
+      }
+
+      function bindImageFallback(imgEl) {
+        if (!imgEl) return;
+        imgEl.addEventListener("error", function () {
+          imgEl.classList.add("is-img-missing");
+        });
+        imgEl.addEventListener("load", function () {
+          imgEl.classList.remove("is-img-missing");
+        });
+      }
+
+      document.querySelectorAll(".hh-pkg-thumb-img").forEach(bindImageFallback);
+      bindImageFallback(previewImg);
+
+      function renderHighlights(highlights) {
+        if (!previewHighlights) return;
+        previewHighlights.innerHTML = "";
+        highlights.forEach(function (text) {
+          var li = document.createElement("li");
+          var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          svg.setAttribute("class", "hh-highlight-check");
+          svg.setAttribute("viewBox", "0 0 24 24");
+          svg.setAttribute("fill", "none");
+          svg.setAttribute("aria-hidden", "true");
+
+          var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          path.setAttribute("d", "M5 13L9 17L19 7");
+          path.setAttribute("stroke", "currentColor");
+          path.setAttribute("stroke-width", "2");
+          path.setAttribute("stroke-linecap", "round");
+          path.setAttribute("stroke-linejoin", "round");
+          svg.appendChild(path);
+
+          var span = document.createElement("span");
+          span.textContent = text;
+
+          li.appendChild(svg);
+          li.appendChild(span);
+          previewHighlights.appendChild(li);
+        });
+      }
+
+      function selectPackage(packageId) {
+        var pkg = PACKAGES[packageId] || PACKAGES.hunza;
+        currentPackageId = pkg.id;
+
+        if (packageSelect.value !== pkg.id) {
+          packageSelect.value = pkg.id;
+        }
+
+        packageCards.forEach(function (card) {
+          var isSelected = card.getAttribute("data-package-id") === pkg.id;
+          card.classList.toggle("is-selected", isSelected);
+          card.setAttribute("aria-pressed", String(isSelected));
+        });
+
+        if (previewImg) {
+          previewImg.classList.remove("is-img-missing");
+          previewImg.setAttribute("src", pkg.image);
+          previewImg.setAttribute("alt", pkg.imageAlt);
+        }
+        if (previewBadge) previewBadge.textContent = pkg.badge;
+        if (previewDurationBadge) previewDurationBadge.textContent = pkg.duration;
+        if (previewLocation) previewLocation.textContent = pkg.location;
+        if (previewName) previewName.textContent = pkg.name;
+        if (previewDurationMeta) previewDurationMeta.textContent = pkg.durationDetail;
+        if (previewPlaceMeta) previewPlaceMeta.textContent = pkg.placeMeta;
+        if (previewDescription) previewDescription.textContent = pkg.description;
+        if (previewPrice) previewPrice.textContent = formatPkr(pkg.pricePerPerson);
+        renderHighlights(pkg.highlights);
+      }
+
+      packageCards.forEach(function (card) {
+        card.addEventListener("click", function () {
+          var id = card.getAttribute("data-package-id");
+          selectPackage(id);
+          if (packageSelect.classList.contains("is-invalid")) {
+            validateForm(false);
+          }
+        });
+      });
+
+      packageSelect.addEventListener("change", function () {
+        selectPackage(packageSelect.value);
+      });
 
       // Set minimum selectable travel date to today (local date)
       var now = new Date();
@@ -402,6 +693,8 @@
         if (savedRaw) {
           var saved = JSON.parse(savedRaw);
           if (saved && typeof saved === "object") {
+            var savedPkgId = normalizePackageKey(saved.packageId || saved.packageName);
+            if (savedPkgId) currentPackageId = savedPkgId;
             if (saved.fullName) fullNameInput.value = saved.fullName;
             if (saved.email) emailInput.value = saved.email;
             if (saved.phone) phoneInput.value = saved.phone;
@@ -410,11 +703,21 @@
               travellerSelect.value = String(saved.travellers);
             }
             if (saved.specialRequests) specialRequestsInput.value = saved.specialRequests;
+            if (Array.isArray(saved.addons)) savedAddons = saved.addons;
           }
         }
       } catch (e) {
         // Ignore storage read errors in restricted environments
       }
+
+      // Query string ?package=... takes precedence if provided
+      var urlParams = new URLSearchParams(window.location.search);
+      var queryPkg = normalizePackageKey(urlParams.get("packageId") || urlParams.get("package"));
+      if (queryPkg) {
+        currentPackageId = queryPkg;
+      }
+
+      selectPackage(currentPackageId);
 
       function setFieldError(inputEl, errorId, message) {
         var errorEl = document.getElementById(errorId);
@@ -447,6 +750,14 @@
       function validateForm(showBanner) {
         var firstInvalid = null;
         var hasErrors = false;
+
+        if (!PACKAGES[packageSelect.value]) {
+          setFieldError(packageSelect, "tourPackageError", "Please choose a tour package");
+          firstInvalid = firstInvalid || packageSelect;
+          hasErrors = true;
+        } else {
+          setFieldError(packageSelect, "tourPackageError", "");
+        }
 
         var fullNameVal = fullNameInput.value.trim();
         if (!fullNameVal) {
@@ -514,7 +825,7 @@
       }
 
       // Live validation cleanup as user types or updates fields
-      [fullNameInput, emailInput, phoneInput, travelDateInput, travellerSelect].forEach(function (el) {
+      [packageSelect, fullNameInput, emailInput, phoneInput, travelDateInput, travellerSelect].forEach(function (el) {
         var eventName = el.tagName === "SELECT" || el.type === "date" ? "change" : "input";
         el.addEventListener(eventName, function () {
           if (el.classList.contains("is-invalid") || !alertBanner.hidden) {
@@ -534,11 +845,14 @@
           return;
         }
 
+        var selectedPkg = PACKAGES[packageSelect.value] || PACKAGES.hunza;
         var bookingData = {
-          packageName: PACKAGE_DETAILS.name,
-          duration: PACKAGE_DETAILS.duration,
-          pricePerPerson: PACKAGE_DETAILS.pricePerPerson,
-          currency: PACKAGE_DETAILS.currency,
+          packageId: selectedPkg.id,
+          packageName: selectedPkg.name,
+          duration: selectedPkg.duration,
+          pricePerPerson: selectedPkg.pricePerPerson,
+          image: selectedPkg.image,
+          currency: selectedPkg.currency,
           fullName: fullNameInput.value.trim(),
           email: emailInput.value.trim(),
           phone: phoneInput.value.trim(),
@@ -548,6 +862,10 @@
           submittedAt: new Date().toISOString()
         };
 
+        if (savedAddons) {
+          bookingData.addons = savedAddons;
+        }
+
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(bookingData));
         } catch (e) {
@@ -555,9 +873,11 @@
         }
 
         var params = new URLSearchParams({
+          packageId: bookingData.packageId,
           package: bookingData.packageName,
           duration: bookingData.duration,
           pricePerPerson: String(bookingData.pricePerPerson),
+          image: bookingData.image,
           fullName: bookingData.fullName,
           email: bookingData.email,
           phone: bookingData.phone,
