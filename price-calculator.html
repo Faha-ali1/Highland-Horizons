@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Price Calculator — Highland Horizons</title>
+
+  <!--
+    Required shared CSS dependencies for all Highland Horizons pages:
+    1. Bootstrap 5.3 CSS (must load before layout.css)
+    2. assets/css/layout.css (automatically imports Libre Baskerville 400 & 700 and defines shared tokens)
+  -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/price-calculator.css">
+</head>
+<body class="hh-calculator-page" data-hh-active-page="price-calculator">
+  <!-- Shared Header Placeholder -->
+  <div id="site-header"></div>
+
+  <!-- Main Price Calculator Content -->
+  <main class="hh-calculator-main">
+    <div class="container hh-calculator-container px-3 px-md-4">
+      <!-- Header Stepper (Step 2 of 3 Active) -->
+      <nav class="hh-booking-steps" aria-label="Booking progress">
+        <a href="booking.html" class="hh-step-pill is-completed">
+          <span class="hh-step-num" aria-hidden="true">
+            <svg class="hh-step-check" viewBox="0 0 24 24" fill="none">
+              <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span>Traveller Details</span>
+        </a>
+        <span class="hh-step-pill is-active" aria-current="step">
+          <span class="hh-step-num">2</span>
+          <span>Price Calculator</span>
+        </span>
+        <span class="hh-step-pill">
+          <span class="hh-step-num">3</span>
+          <span>Confirmation</span>
+        </span>
+      </nav>
+
+      <!-- Page Heading -->
+      <header class="hh-calculator-hero">
+        <span class="hh-calculator-eyebrow">Step 2 of 3 &middot; Price Calculator</span>
+        <h1 class="hh-calculator-title">Customize Your Trip Estimate</h1>
+        <p class="hh-calculator-subtitle">
+          Tailor your expedition with optional upgrades below. Your base fare, add-ons, and 5% tax
+          update automatically in real time.
+        </p>
+      </header>
+
+      <!-- Two-Column Responsive Layout -->
+      <div class="row g-4 align-items-start">
+        <!-- Left Sidebar: Trip Summary -->
+        <div class="col-12 col-lg-4">
+          <aside class="hh-summary-card" aria-label="Selected package summary">
+            <div class="hh-summary-visual">
+              <img
+                id="summaryPackageImage"
+                class="hh-summary-photo"
+                src="assets/images/hunza.jpg"
+                alt="Hunza Valley mountains and terraced orchards"
+              >
+              <span class="hh-summary-fallback" id="summaryPackageFallback" aria-hidden="true">Hunza</span>
+              <span class="hh-summary-duration-badge" id="summaryDurationBadge">5 Days</span>
+            </div>
+
+            <div class="hh-summary-body">
+              <span class="hh-summary-eyebrow">Trip Summary</span>
+              <h2 class="hh-summary-package-name" id="summaryPackageName">Hunza</h2>
+
+              <dl class="hh-summary-list mb-0">
+                <div class="hh-summary-row">
+                  <dt>Selected Package</dt>
+                  <dd id="summaryPackageRow">Hunza</dd>
+                </div>
+                <div class="hh-summary-row">
+                  <dt>Duration</dt>
+                  <dd id="summaryDuration">5 Days</dd>
+                </div>
+                <div class="hh-summary-row">
+                  <dt>Base Price</dt>
+                  <dd id="summaryBasePrice">PKR 67,500 / person</dd>
+                </div>
+                <div class="hh-summary-row">
+                  <dt>Traveller Count</dt>
+                  <dd id="summaryTravellers">1 Traveller</dd>
+                </div>
+                <div class="hh-summary-row" id="summaryDateRow" hidden>
+                  <dt>Departure Date</dt>
+                  <dd id="summaryTravelDate"></dd>
+                </div>
+                <div class="hh-summary-row" id="summaryGuestRow" hidden>
+                  <dt>Lead Traveller</dt>
+                  <dd id="summaryGuestName"></dd>
+                </div>
+              </dl>
+
+              <p class="hh-summary-note">
+                Need to switch packages or change traveller count? Return to Step 1 anytime without losing your selections.
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Right Column: Add-ons & Cost Breakdown -->
+        <div class="col-12 col-lg-8">
+          <!-- Interactive Add-Ons Card -->
+          <section class="hh-addons-card" aria-labelledby="addonsHeading">
+            <div class="hh-section-header">
+              <div>
+                <h2 class="hh-section-heading" id="addonsHeading">Optional Expedition Add-Ons</h2>
+                <p class="hh-section-intro mb-0">
+                  Select any enhancements you would like included in your itinerary.
+                </p>
+              </div>
+              <span class="hh-addons-count" id="addonsSelectedCount">0 selected</span>
+            </div>
+
+            <div class="hh-addons-list">
+              <!-- Add-on 1: Private 4x4 Jeep Upgrade -->
+              <label class="hh-addon-option" for="addonJeep">
+                <input
+                  type="checkbox"
+                  class="hh-addon-checkbox"
+                  id="addonJeep"
+                  name="addons"
+                  value="jeep"
+                  data-addon-id="jeep"
+                  data-addon-label="Private 4x4 Jeep Upgrade"
+                  data-price="25000"
+                  data-per-person="false"
+                >
+                <span class="hh-addon-check-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="hh-addon-content">
+                  <span class="hh-addon-top">
+                    <span class="hh-addon-title">Private 4x4 Jeep Upgrade</span>
+                    <span class="hh-addon-price">+PKR 25,000</span>
+                  </span>
+                  <span class="hh-addon-desc">
+                    Dedicated private 4x4 vehicle and experienced mountain driver for valley transfers and high-pass excursions.
+                  </span>
+                </span>
+              </label>
+
+              <!-- Add-on 2: Professional Local Tour Guide -->
+              <label class="hh-addon-option" for="addonGuide">
+                <input
+                  type="checkbox"
+                  class="hh-addon-checkbox"
+                  id="addonGuide"
+                  name="addons"
+                  value="guide"
+                  data-addon-id="guide"
+                  data-addon-label="Professional Local Tour Guide"
+                  data-price="15000"
+                  data-per-person="false"
+                >
+                <span class="hh-addon-check-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="hh-addon-content">
+                  <span class="hh-addon-top">
+                    <span class="hh-addon-title">Professional Local Tour Guide</span>
+                    <span class="hh-addon-price">+PKR 15,000</span>
+                  </span>
+                  <span class="hh-addon-desc">
+                    Certified regional specialist fluent in local history, culture, and scenic alpine trail navigation.
+                  </span>
+                </span>
+              </label>
+
+              <!-- Add-on 3: Luxury Room Upgrade -->
+              <label class="hh-addon-option" for="addonLuxury">
+                <input
+                  type="checkbox"
+                  class="hh-addon-checkbox"
+                  id="addonLuxury"
+                  name="addons"
+                  value="luxury-room"
+                  data-addon-id="luxury-room"
+                  data-addon-label="Luxury Room Upgrade"
+                  data-price="20000"
+                  data-per-person="false"
+                >
+                <span class="hh-addon-check-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="hh-addon-content">
+                  <span class="hh-addon-top">
+                    <span class="hh-addon-title">Luxury Room Upgrade</span>
+                    <span class="hh-addon-price">+PKR 20,000</span>
+                  </span>
+                  <span class="hh-addon-desc">
+                    Upgrade to panoramic valley-view suites at our partnered boutique lodges and mountain resorts.
+                  </span>
+                </span>
+              </label>
+
+              <!-- Add-on 4: All-Inclusive Meals (+PKR 10,000/person) -->
+              <label class="hh-addon-option" for="addonMeals">
+                <input
+                  type="checkbox"
+                  class="hh-addon-checkbox"
+                  id="addonMeals"
+                  name="addons"
+                  value="meals"
+                  data-addon-id="meals"
+                  data-addon-label="All-Inclusive Meals"
+                  data-price="10000"
+                  data-per-person="true"
+                >
+                <span class="hh-addon-check-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="hh-addon-content">
+                  <span class="hh-addon-top">
+                    <span class="hh-addon-title">All-Inclusive Meals</span>
+                    <span class="hh-addon-price">+PKR 10,000/person</span>
+                  </span>
+                  <span class="hh-addon-desc">
+                    Daily regional lunches, afternoon chai stops, and freshly prepared mountain dinners throughout your trip.
+                  </span>
+                  <span class="hh-addon-calc-note" id="mealsPerPersonNote">
+                    PKR 10,000 &times; 1 traveller = PKR 10,000
+                  </span>
+                </span>
+              </label>
+            </div>
+          </section>
+
+          <!-- Real-Time Cost Breakdown Card -->
+          <section class="hh-breakdown-card" aria-labelledby="breakdownHeading">
+            <h2 class="hh-section-heading" id="breakdownHeading">Real-Time Cost Breakdown</h2>
+
+            <div class="hh-breakdown-lines" aria-live="polite">
+              <div class="hh-breakdown-row">
+                <div>
+                  <span class="hh-breakdown-label">Base Total</span>
+                  <span class="hh-breakdown-sub" id="breakdownBaseSub">PKR 67,500 &times; 1 traveller</span>
+                </div>
+                <span class="hh-breakdown-value" id="breakdownBaseTotal">PKR 67,500</span>
+              </div>
+
+              <div class="hh-breakdown-row">
+                <div>
+                  <span class="hh-breakdown-label">Add-Ons Total</span>
+                  <ul class="hh-breakdown-addon-items list-unstyled mb-0" id="breakdownAddonList">
+                    <li>No add-ons selected</li>
+                  </ul>
+                </div>
+                <span class="hh-breakdown-value" id="breakdownAddonsTotal">PKR 0</span>
+              </div>
+
+              <div class="hh-breakdown-row">
+                <div>
+                  <span class="hh-breakdown-label">Taxes &amp; Service Levy (5% Tax)</span>
+                  <span class="hh-breakdown-sub">5% applied to Base + Add-ons subtotal</span>
+                </div>
+                <span class="hh-breakdown-value" id="breakdownTax">PKR 3,375</span>
+              </div>
+
+              <hr class="hh-breakdown-divider">
+
+              <div class="hh-breakdown-total-row">
+                <div>
+                  <span class="hh-breakdown-total-label">Grand Total</span>
+                  <span class="hh-breakdown-total-sub">Estimated trip total in Pakistani Rupees</span>
+                </div>
+                <span class="hh-breakdown-total-value" id="breakdownGrandTotal">PKR 70,875</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hh-calculator-actions">
+              <a href="booking.html" class="btn hh-secondary-btn" id="backToDetailsBtn">
+                <svg class="hh-btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Back to Details</span>
+              </a>
+
+              <button type="button" class="btn hh-cta-btn" id="proceedConfirmBtn">
+                <span>Proceed to Confirmation</span>
+                <svg class="hh-btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared Footer Placeholder -->
+  <div id="site-footer"></div>
+
+  <!--
+    Required shared JavaScript dependencies for all Highland Horizons pages:
+    1. Bootstrap 5.3 Bundle JS (includes Popper for dropdowns and mobile collapse)
+    2. assets/js/layout.js (loads components/header.html and components/footer.html via fetch())
+  -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="assets/js/layout.js"></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var STORAGE_KEY = "hhBookingData";
+      var TAX_RATE = 0.05;
+
+      var PACKAGE_CATALOG = {
+        hunza: {
+          id: "hunza",
+          name: "Hunza",
+          duration: "5 Days",
+          pricePerPerson: 67500,
+          image: "assets/images/hunza.jpg",
+          imageAlt: "Hunza Valley mountains and terraced orchards"
+        },
+        skardu: {
+          id: "skardu",
+          name: "Skardu",
+          duration: "7 Days",
+          pricePerPerson: 101500,
+          image: "assets/images/skardu.jpg",
+          imageAlt: "Skardu Valley alpine lakes and peaks"
+        },
+        "fairy-meadows": {
+          id: "fairy-meadows",
+          name: "Fairy Meadows",
+          duration: "4 Days",
+          pricePerPerson: 48000,
+          image: "assets/images/fairymeadows.jpg",
+          imageAlt: "Fairy Meadows pine forest facing Nanga Parbat"
+        },
+        shogran: {
+          id: "shogran",
+          name: "Shogran",
+          duration: "3 Days",
+          pricePerPerson: 31500,
+          image: "assets/images/shogran.jpg",
+          imageAlt: "Shogran cedar hills and Siri Paye meadows"
+        }
+      };
+
+      function normalizePackageId(rawValue) {
+        if (!rawValue) return null;
+        var key = String(rawValue).trim().toLowerCase().replace(/\s+/g, "-");
+        if (PACKAGE_CATALOG[key]) return key;
+        if (key.indexOf("hunza") !== -1) return "hunza";
+        if (key.indexOf("skardu") !== -1) return "skardu";
+        if (key.indexOf("fairy") !== -1) return "fairy-meadows";
+        if (key.indexOf("shogran") !== -1) return "shogran";
+        return null;
+      }
+
+      function formatPkr(amount) {
+        return "PKR " + Math.round(Number(amount)).toLocaleString("en-US");
+      }
+
+      // Load saved booking state from localStorage, then overlay URL parameters
+      var bookingState = {
+        packageId: "hunza",
+        packageName: "Hunza",
+        duration: "5 Days",
+        pricePerPerson: 67500,
+        image: "assets/images/hunza.jpg",
+        currency: "PKR",
+        fullName: "",
+        email: "",
+        phone: "",
+        travelDate: "",
+        travellers: 1,
+        specialRequests: "",
+        addons: []
+      };
+
+      try {
+        var savedRaw = localStorage.getItem(STORAGE_KEY);
+        if (savedRaw) {
+          var parsed = JSON.parse(savedRaw);
+          if (parsed && typeof parsed === "object") {
+            Object.assign(bookingState, parsed);
+          }
+        }
+      } catch (e) {
+        // Ignore storage read errors
+      }
+
+      var params = new URLSearchParams(window.location.search);
+      var urlPkgId = normalizePackageId(params.get("packageId") || params.get("package") || bookingState.packageId || bookingState.packageName);
+      var pkgInfo = PACKAGE_CATALOG[urlPkgId || "hunza"];
+
+      bookingState.packageId = pkgInfo.id;
+      bookingState.packageName = params.get("package") || pkgInfo.name;
+      bookingState.duration = params.get("duration") || pkgInfo.duration;
+
+      var urlPrice = Number(params.get("pricePerPerson"));
+      bookingState.pricePerPerson = !isNaN(urlPrice) && urlPrice > 0 ? urlPrice : pkgInfo.pricePerPerson;
+      bookingState.image = params.get("image") || pkgInfo.image;
+
+      if (params.has("fullName")) bookingState.fullName = params.get("fullName") || "";
+      if (params.has("email")) bookingState.email = params.get("email") || "";
+      if (params.has("phone")) bookingState.phone = params.get("phone") || "";
+      if (params.has("travelDate")) bookingState.travelDate = params.get("travelDate") || "";
+      if (params.has("specialRequests")) bookingState.specialRequests = params.get("specialRequests") || "";
+
+      var urlTravellers = Number(params.get("travellers"));
+      var parsedTravellers = !isNaN(urlTravellers) && urlTravellers >= 1 ? urlTravellers : Number(bookingState.travellers);
+      bookingState.travellers = !isNaN(parsedTravellers) && parsedTravellers >= 1 ? Math.min(10, Math.round(parsedTravellers)) : 1;
+
+      // Elements
+      var summaryImg = document.getElementById("summaryPackageImage");
+      var summaryFallback = document.getElementById("summaryPackageFallback");
+      var summaryDurationBadge = document.getElementById("summaryDurationBadge");
+      var summaryPackageName = document.getElementById("summaryPackageName");
+      var summaryPackageRow = document.getElementById("summaryPackageRow");
+      var summaryDuration = document.getElementById("summaryDuration");
+      var summaryBasePrice = document.getElementById("summaryBasePrice");
+      var summaryTravellers = document.getElementById("summaryTravellers");
+      var summaryDateRow = document.getElementById("summaryDateRow");
+      var summaryTravelDate = document.getElementById("summaryTravelDate");
+      var summaryGuestRow = document.getElementById("summaryGuestRow");
+      var summaryGuestName = document.getElementById("summaryGuestName");
+
+      var addonCheckboxes = Array.prototype.slice.call(document.querySelectorAll(".hh-addon-checkbox"));
+      var addonsSelectedCount = document.getElementById("addonsSelectedCount");
+      var mealsPerPersonNote = document.getElementById("mealsPerPersonNote");
+
+      var breakdownBaseSub = document.getElementById("breakdownBaseSub");
+      var breakdownBaseTotal = document.getElementById("breakdownBaseTotal");
+      var breakdownAddonList = document.getElementById("breakdownAddonList");
+      var breakdownAddonsTotal = document.getElementById("breakdownAddonsTotal");
+      var breakdownTax = document.getElementById("breakdownTax");
+      var breakdownGrandTotal = document.getElementById("breakdownGrandTotal");
+
+      var backBtn = document.getElementById("backToDetailsBtn");
+      var proceedBtn = document.getElementById("proceedConfirmBtn");
+
+      if (summaryImg) {
+        summaryImg.addEventListener("error", function () {
+          summaryImg.classList.add("is-img-missing");
+        });
+        summaryImg.addEventListener("load", function () {
+          summaryImg.classList.remove("is-img-missing");
+        });
+        summaryImg.setAttribute("src", bookingState.image);
+        summaryImg.setAttribute("alt", pkgInfo.imageAlt);
+      }
+
+      if (summaryFallback) summaryFallback.textContent = bookingState.packageName;
+      if (summaryDurationBadge) summaryDurationBadge.textContent = bookingState.duration;
+      if (summaryPackageName) summaryPackageName.textContent = bookingState.packageName;
+      if (summaryPackageRow) summaryPackageRow.textContent = bookingState.packageName;
+      if (summaryDuration) summaryDuration.textContent = bookingState.duration;
+      if (summaryBasePrice) summaryBasePrice.textContent = formatPkr(bookingState.pricePerPerson) + " / person";
+
+      var travellerLabel = bookingState.travellers === 1 ? "1 Traveller" : bookingState.travellers + " Travellers";
+      if (summaryTravellers) summaryTravellers.textContent = travellerLabel;
+
+      if (bookingState.travelDate && summaryDateRow && summaryTravelDate) {
+        summaryTravelDate.textContent = bookingState.travelDate;
+        summaryDateRow.hidden = false;
+      }
+      if (bookingState.fullName && summaryGuestRow && summaryGuestName) {
+        summaryGuestName.textContent = bookingState.fullName;
+        summaryGuestRow.hidden = false;
+      }
+
+      if (mealsPerPersonNote) {
+        mealsPerPersonNote.textContent =
+          "PKR 10,000 \u00d7 " +
+          travellerLabel.toLowerCase() +
+          " = " +
+          formatPkr(10000 * bookingState.travellers);
+      }
+
+      // Restore previously selected add-ons if stored
+      if (Array.isArray(bookingState.addons) && bookingState.addons.length > 0) {
+        var savedIds = bookingState.addons.map(function (item) {
+          return typeof item === "string" ? item : item.id;
+        });
+        addonCheckboxes.forEach(function (checkbox) {
+          var id = checkbox.getAttribute("data-addon-id");
+          if (savedIds.indexOf(id) !== -1) {
+            checkbox.checked = true;
+          }
+        });
+      }
+
+      function computeTotals() {
+        var baseTotal = bookingState.pricePerPerson * bookingState.travellers;
+        var selectedAddons = [];
+        var addonsTotal = 0;
+
+        addonCheckboxes.forEach(function (checkbox) {
+          var optionCard = checkbox.closest(".hh-addon-option");
+          if (optionCard) {
+            optionCard.classList.toggle("is-checked", checkbox.checked);
+          }
+
+          if (checkbox.checked) {
+            var unitPrice = Number(checkbox.getAttribute("data-price")) || 0;
+            var perPerson = checkbox.getAttribute("data-per-person") === "true";
+            var itemTotal = perPerson ? unitPrice * bookingState.travellers : unitPrice;
+            addonsTotal += itemTotal;
+            selectedAddons.push({
+              id: checkbox.getAttribute("data-addon-id"),
+              label: checkbox.getAttribute("data-addon-label"),
+              unitPrice: unitPrice,
+              perPerson: perPerson,
+              totalPrice: itemTotal
+            });
+          }
+        });
+
+        var subtotal = baseTotal + addonsTotal;
+        var taxAmount = Math.round(subtotal * TAX_RATE);
+        var grandTotal = subtotal + taxAmount;
+
+        return {
+          baseTotal: baseTotal,
+          addonsTotal: addonsTotal,
+          taxAmount: taxAmount,
+          grandTotal: grandTotal,
+          selectedAddons: selectedAddons
+        };
+      }
+
+      function renderBreakdown() {
+        var calc = computeTotals();
+
+        if (addonsSelectedCount) {
+          addonsSelectedCount.textContent = calc.selectedAddons.length + " selected";
+        }
+        if (breakdownBaseSub) {
+          breakdownBaseSub.textContent =
+            formatPkr(bookingState.pricePerPerson) + " \u00d7 " + travellerLabel.toLowerCase();
+        }
+        if (breakdownBaseTotal) {
+          breakdownBaseTotal.textContent = formatPkr(calc.baseTotal);
+        }
+        if (breakdownAddonsTotal) {
+          breakdownAddonsTotal.textContent = formatPkr(calc.addonsTotal);
+        }
+        if (breakdownTax) {
+          breakdownTax.textContent = formatPkr(calc.taxAmount);
+        }
+        if (breakdownGrandTotal) {
+          breakdownGrandTotal.textContent = formatPkr(calc.grandTotal);
+        }
+
+        if (breakdownAddonList) {
+          breakdownAddonList.innerHTML = "";
+          if (calc.selectedAddons.length === 0) {
+            var emptyLi = document.createElement("li");
+            emptyLi.textContent = "No add-ons selected";
+            breakdownAddonList.appendChild(emptyLi);
+          } else {
+            calc.selectedAddons.forEach(function (addon) {
+              var li = document.createElement("li");
+              li.textContent = addon.label + " (" + formatPkr(addon.totalPrice) + ")";
+              breakdownAddonList.appendChild(li);
+            });
+          }
+        }
+
+        return calc;
+      }
+
+      function persistState(calc) {
+        bookingState.addons = calc.selectedAddons;
+        bookingState.baseTotal = calc.baseTotal;
+        bookingState.addonsTotal = calc.addonsTotal;
+        bookingState.taxAmount = calc.taxAmount;
+        bookingState.grandTotal = calc.grandTotal;
+        bookingState.updatedAt = new Date().toISOString();
+
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(bookingState));
+        } catch (e) {
+          // Ignore storage write errors
+        }
+      }
+
+      addonCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", function () {
+          var calc = renderBreakdown();
+          persistState(calc);
+        });
+      });
+
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          var calc = computeTotals();
+          persistState(calc);
+        });
+      }
+
+      if (proceedBtn) {
+        proceedBtn.addEventListener("click", function () {
+          var calc = renderBreakdown();
+          persistState(calc);
+
+          var confirmParams = new URLSearchParams({
+            packageId: bookingState.packageId,
+            package: bookingState.packageName,
+            duration: bookingState.duration,
+            pricePerPerson: String(bookingState.pricePerPerson),
+            travellers: String(bookingState.travellers),
+            baseTotal: String(calc.baseTotal),
+            addonsTotal: String(calc.addonsTotal),
+            tax: String(calc.taxAmount),
+            grandTotal: String(calc.grandTotal),
+            addons: calc.selectedAddons.map(function (a) { return a.label; }).join(", "),
+            fullName: bookingState.fullName,
+            email: bookingState.email,
+            phone: bookingState.phone,
+            travelDate: bookingState.travelDate,
+            specialRequests: bookingState.specialRequests
+          });
+
+          window.location.href = "booking-confirmation.html?" + confirmParams.toString();
+        });
+      }
+
+      // Initial calculation & render
+      var initialCalc = renderBreakdown();
+      persistState(initialCalc);
+    })();
+  </script>
+</body>
+</html>

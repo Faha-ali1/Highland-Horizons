@@ -1,0 +1,610 @@
+/* ==========================================================================
+   Highland Horizons — Price Calculator Page Styles
+   Depends on Bootstrap 5.3 + assets/css/layout.css color & typography tokens
+   ========================================================================== */
+
+body.hh-calculator-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--hh-cream);
+  font-family: var(--hh-font-serif);
+  color: var(--hh-olive-green);
+}
+
+main.hh-calculator-main {
+  flex: 1 0 auto;
+  padding: 2.5rem 0 4rem;
+}
+
+.hh-calculator-container {
+  max-width: 1200px;
+}
+
+/* Progress Steps / Breadcrumb Indicator (Matches booking.css) */
+.hh-booking-steps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--hh-olive-green);
+}
+
+.hh-step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background-color: rgba(217, 179, 130, 0.22);
+  border: 1px solid rgba(27, 94, 59, 0.2);
+  color: var(--hh-olive-green);
+  text-decoration: none;
+}
+
+.hh-step-pill.is-completed {
+  background-color: rgba(167, 201, 87, 0.26);
+  border-color: rgba(27, 94, 59, 0.35);
+  color: var(--hh-forest-green);
+  font-weight: 700;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.hh-step-pill.is-completed:hover,
+.hh-step-pill.is-completed:focus-visible {
+  background-color: rgba(167, 201, 87, 0.42);
+  border-color: var(--hh-forest-green);
+  color: var(--hh-forest-green);
+}
+
+.hh-step-pill.is-active {
+  background-color: var(--hh-forest-green);
+  border-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+  font-weight: 700;
+}
+
+.hh-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: rgba(248, 246, 237, 0.22);
+}
+
+.hh-step-pill.is-completed .hh-step-num {
+  background-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+.hh-step-pill:not(.is-active):not(.is-completed) .hh-step-num {
+  background-color: rgba(27, 94, 59, 0.14);
+  color: var(--hh-forest-green);
+}
+
+.hh-step-check {
+  width: 0.8rem;
+  height: 0.8rem;
+  display: block;
+}
+
+/* Page Header */
+.hh-calculator-hero {
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(27, 94, 59, 0.2);
+}
+
+.hh-calculator-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hh-earthy-orange);
+  margin-bottom: 0.45rem;
+}
+
+.hh-calculator-title {
+  color: var(--hh-forest-green);
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+.hh-calculator-subtitle {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--hh-olive-green);
+  max-width: 680px;
+  margin-bottom: 0;
+}
+
+/* Left Sidebar Summary Card */
+.hh-summary-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(27, 94, 59, 0.22);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(27, 94, 59, 0.08);
+}
+
+.hh-summary-visual {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, var(--hh-sky-blue) 0%, #dcebf7 48%, var(--hh-sage-green) 100%);
+  border-bottom: 3px solid var(--hh-sand-beige);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hh-summary-photo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hh-summary-photo.is-img-missing {
+  display: none;
+}
+
+.hh-summary-fallback {
+  position: absolute;
+  z-index: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hh-forest-green);
+}
+
+.hh-summary-duration-badge {
+  position: absolute;
+  z-index: 3;
+  top: 0.85rem;
+  right: 0.85rem;
+  background-color: rgba(248, 246, 237, 0.94);
+  color: var(--hh-forest-green);
+  border: 1px solid rgba(27, 94, 59, 0.25);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+
+.hh-summary-body {
+  padding: 1.5rem 1.4rem 1.6rem;
+}
+
+.hh-summary-eyebrow {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hh-earthy-orange);
+  margin-bottom: 0.25rem;
+}
+
+.hh-summary-package-name {
+  color: var(--hh-forest-green);
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hh-summary-list {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+  background-color: var(--hh-cream);
+  border: 1px solid rgba(217, 179, 130, 0.65);
+  border-radius: 10px;
+}
+
+.hh-summary-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.86rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px dashed rgba(27, 94, 59, 0.16);
+}
+
+.hh-summary-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.hh-summary-row dt {
+  font-weight: 400;
+  color: var(--hh-olive-green);
+  flex-shrink: 0;
+}
+
+.hh-summary-row dd {
+  margin-bottom: 0;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.hh-summary-note {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--hh-olive-green);
+  opacity: 0.88;
+}
+
+/* Right Column Cards */
+.hh-addons-card,
+.hh-breakdown-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(27, 94, 59, 0.22);
+  border-radius: 14px;
+  padding: 1.65rem 1.4rem;
+  box-shadow: 0 12px 28px rgba(27, 94, 59, 0.08);
+}
+
+.hh-addons-card {
+  margin-bottom: 1.5rem;
+}
+
+.hh-section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.65rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.hh-section-heading {
+  color: var(--hh-forest-green);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.hh-section-intro {
+  font-size: 0.88rem;
+  color: var(--hh-olive-green);
+  line-height: 1.5;
+}
+
+.hh-addons-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  background-color: rgba(167, 201, 87, 0.25);
+  border: 1px solid rgba(27, 94, 59, 0.24);
+  color: var(--hh-forest-green);
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Add-On Checkbox Cards */
+.hh-addons-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.hh-addon-option {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: 10px;
+  background-color: var(--hh-cream);
+  border: 1.5px solid rgba(27, 94, 59, 0.22);
+  cursor: pointer;
+  transition: border-color 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.hh-addon-option:hover {
+  border-color: var(--hh-forest-green);
+  background-color: #ffffff;
+}
+
+.hh-addon-option.is-checked {
+  background-color: #ffffff;
+  border-color: var(--hh-forest-green);
+  box-shadow: 0 0 0 2px rgba(27, 94, 59, 0.14), 0 6px 16px rgba(27, 94, 59, 0.08);
+}
+
+.hh-addon-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  pointer-events: none;
+}
+
+.hh-addon-check-box {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.8px solid rgba(27, 94, 59, 0.48);
+  background-color: #ffffff;
+  color: var(--hh-cream);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.hh-addon-check-box svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.hh-addon-checkbox:checked + .hh-addon-check-box {
+  background-color: var(--hh-forest-green);
+  border-color: var(--hh-forest-green);
+}
+
+.hh-addon-checkbox:checked + .hh-addon-check-box svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hh-addon-checkbox:focus-visible + .hh-addon-check-box {
+  outline: 2px solid var(--hh-forest-green);
+  outline-offset: 2px;
+}
+
+.hh-addon-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hh-addon-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 0.75rem;
+}
+
+.hh-addon-title {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+}
+
+.hh-addon-price {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--hh-earthy-orange);
+  white-space: nowrap;
+}
+
+.hh-addon-desc {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--hh-olive-green);
+}
+
+.hh-addon-calc-note {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  margin-top: 0.15rem;
+}
+
+/* Cost Breakdown Card */
+.hh-breakdown-card .hh-section-heading {
+  margin-bottom: 1.15rem;
+}
+
+.hh-breakdown-lines {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.hh-breakdown-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hh-breakdown-label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+}
+
+.hh-breakdown-sub {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--hh-olive-green);
+  opacity: 0.86;
+  margin-top: 0.15rem;
+}
+
+.hh-breakdown-addon-items {
+  font-size: 0.78rem;
+  color: var(--hh-olive-green);
+  opacity: 0.88;
+  margin-top: 0.2rem;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.hh-breakdown-value {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  white-space: nowrap;
+}
+
+.hh-breakdown-divider {
+  border: 0;
+  border-top: 1.5px solid var(--hh-sand-beige);
+  opacity: 1;
+  margin: 0.25rem 0;
+}
+
+.hh-breakdown-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1.1rem;
+  background-color: var(--hh-cream);
+  border: 1px solid var(--hh-sand-beige);
+  border-left: 4px solid var(--hh-earthy-orange);
+  border-radius: 10px;
+}
+
+.hh-breakdown-total-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--hh-forest-green);
+}
+
+.hh-breakdown-total-sub {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--hh-olive-green);
+}
+
+.hh-breakdown-total-value {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  color: var(--hh-forest-green);
+  white-space: nowrap;
+}
+
+/* Action Buttons */
+.hh-calculator-actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.hh-secondary-btn,
+.hh-cta-btn {
+  font-family: var(--hh-font-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.35rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+}
+
+.hh-secondary-btn {
+  background-color: var(--hh-cream);
+  border: 1.5px solid var(--hh-forest-green);
+  color: var(--hh-forest-green);
+}
+
+.hh-secondary-btn:hover,
+.hh-secondary-btn:focus-visible {
+  background-color: var(--hh-forest-green);
+  border-color: var(--hh-forest-green);
+  color: var(--hh-cream);
+}
+
+.hh-cta-btn {
+  background-color: var(--hh-earthy-orange);
+  border: 1.5px solid var(--hh-earthy-orange);
+  color: var(--hh-cream);
+  box-shadow: 0 6px 16px rgba(201, 123, 61, 0.26);
+}
+
+.hh-cta-btn:hover,
+.hh-cta-btn:focus-visible {
+  background-color: #b1682f;
+  border-color: #b1682f;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(201, 123, 61, 0.34);
+}
+
+.hh-secondary-btn:active,
+.hh-cta-btn:active {
+  transform: translateY(1px);
+}
+
+.hh-btn-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 576px) {
+  .hh-calculator-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hh-secondary-btn {
+    flex: 0 0 auto;
+  }
+
+  .hh-cta-btn {
+    flex: 1 1 auto;
+    max-width: 340px;
+  }
+}
+
+@media (min-width: 768px) {
+  main.hh-calculator-main {
+    padding: 3rem 0 4.5rem;
+  }
+
+  .hh-summary-body {
+    padding: 1.75rem 1.65rem;
+  }
+
+  .hh-addons-card,
+  .hh-breakdown-card {
+    padding: 1.9rem 2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .hh-summary-card {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
