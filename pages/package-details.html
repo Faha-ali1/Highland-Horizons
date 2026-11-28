@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore comprehensive package details, itinerary, pricing, accommodation, and reservation options for Highland Horizons tour packages in Northern Pakistan.">
+  <title>Package Details — Highland Horizons</title>
+
+  <!--
+    Required shared CSS dependencies for all Highland Horizons pages:
+    1. Bootstrap 5.3 CSS (must load before layout.css)
+    2. assets/css/layout.css (automatically imports Libre Baskerville 400 & 700 and defines shared tokens)
+  -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+  <link rel="stylesheet" href="../assets/css/layout.css">
+
+  <!-- Page-specific typography and styling -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/package-details.css">
+</head>
+<body class="pd-body" data-hh-active-page="tour-packages">
+  <!-- Shared Header Placeholder -->
+  <div id="site-header"></div>
+
+  <main class="pd-main" id="pd-main-content">
+    <div class="pd-container">
+
+      <!-- Navigation & Breadcrumb Row -->
+      <nav class="pd-nav-bar" aria-label="Breadcrumb navigation">
+        <a href="tour-packages.html" class="pd-back-link" id="pd-back-link">
+          <svg class="pd-back-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Tour Packages</span>
+        </a>
+      </nav>
+
+      <!-- Feedback / Notification banner for Saved Package actions -->
+      <div id="pd-notification-banner" class="pd-notification" role="status" aria-live="polite" hidden></div>
+
+      <!-- Package Content Wrapper -->
+      <article id="pd-package-wrapper" class="pd-package-wrapper">
+
+        <!-- Header Section: Title & Key Badges -->
+        <header class="pd-header-section">
+          <div class="pd-header-top">
+            <span class="pd-destination-tag" id="pd-package-destination">Destination</span>
+            <span class="pd-duration-pill" id="pd-package-duration">Duration</span>
+          </div>
+          <h1 class="pd-package-title" id="pd-package-title">Tour Package Details</h1>
+        </header>
+
+        <!-- Two-column Grid (Content on Left, Booking Box on Right) -->
+        <div class="pd-details-grid">
+
+          <!-- Left Column: Visual, Description, Amenities, Day-by-Day Itinerary -->
+          <div class="pd-main-column">
+
+            <!-- Hero Destination Visual -->
+            <div class="pd-visual-card">
+              <img id="pd-hero-image" class="pd-hero-img" src="" alt="Tour package destination preview" width="800" height="450">
+            </div>
+
+            <!-- Overview & Description -->
+            <section class="pd-section pd-card" aria-labelledby="pd-overview-heading">
+              <h2 id="pd-overview-heading" class="pd-section-title">Trip Overview</h2>
+              <p id="pd-package-description" class="pd-package-description">Loading package description...</p>
+
+              <!-- Essential Highlights Grid -->
+              <div class="pd-amenities-grid">
+                <div class="pd-amenity-item">
+                  <div class="pd-amenity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                  </div>
+                  <div class="pd-amenity-text">
+                    <span class="pd-amenity-label">Accommodation</span>
+                    <strong id="pd-package-accommodation" class="pd-amenity-val">—</strong>
+                  </div>
+                </div>
+
+                <div class="pd-amenity-item">
+                  <div class="pd-amenity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                      <line x1="6" y1="1" x2="6" y2="4"></line>
+                      <line x1="10" y1="1" x2="10" y2="4"></line>
+                      <line x1="14" y1="1" x2="14" y2="4"></line>
+                    </svg>
+                  </div>
+                  <div class="pd-amenity-text">
+                    <span class="pd-amenity-label">Meals Provided</span>
+                    <strong id="pd-package-meals" class="pd-amenity-val">—</strong>
+                  </div>
+                </div>
+
+                <div class="pd-amenity-item">
+                  <div class="pd-amenity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </div>
+                  <div class="pd-amenity-text">
+                    <span class="pd-amenity-label">Tour Guide</span>
+                    <strong id="pd-package-guide" class="pd-amenity-val">—</strong>
+                  </div>
+                </div>
+
+                <div class="pd-amenity-item">
+                  <div class="pd-amenity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </div>
+                  <div class="pd-amenity-text">
+                    <span class="pd-amenity-label">Trip Duration</span>
+                    <strong id="pd-package-duration-detail" class="pd-amenity-val">—</strong>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Day-by-Day Itinerary -->
+            <section class="pd-section pd-card" aria-labelledby="pd-itinerary-heading">
+              <div class="pd-itinerary-header">
+                <h2 id="pd-itinerary-heading" class="pd-section-title">Day-by-Day Itinerary</h2>
+                <span class="pd-itinerary-badge" id="pd-itinerary-day-count">Planned Itinerary</span>
+              </div>
+              <p class="pd-itinerary-lead">
+                Every detail is planned for comfort, safety, and an authentic Himalayan experience.
+              </p>
+
+              <div id="pd-itinerary-list" class="pd-itinerary-timeline">
+                <!-- Dynamically generated days -->
+              </div>
+            </section>
+
+          </div>
+
+          <!-- Right Column: Interactive Pricing & Booking Sidebar -->
+          <aside class="pd-sidebar-column">
+            <div class="pd-booking-card" aria-labelledby="pd-booking-box-title">
+
+              <h2 id="pd-booking-box-title" class="pd-booking-card-title">Book This Experience</h2>
+
+              <!-- Price Per Person Display -->
+              <div class="pd-price-unit-row">
+                <span class="pd-price-unit-label">Price per person</span>
+                <div class="pd-price-unit-amount" id="pd-rate-per-person">PKR 0</div>
+              </div>
+
+              <hr class="pd-divider">
+
+              <!-- Traveller Counter -->
+              <div class="pd-counter-section">
+                <div class="pd-counter-header">
+                  <label for="pd-traveller-display" class="pd-counter-label" id="pd-traveller-label">Travellers</label>
+                  <span class="pd-counter-subtext">Min: 1 traveller</span>
+                </div>
+                <div class="pd-counter-controls" role="group" aria-labelledby="pd-traveller-label">
+                  <button
+                    type="button"
+                    id="pd-btn-minus"
+                    class="pd-counter-btn"
+                    aria-label="Decrease traveller count"
+                    disabled
+                  >&minus;</button>
+                  <input
+                    type="number"
+                    id="pd-traveller-display"
+                    class="pd-counter-input"
+                    value="1"
+                    min="1"
+                    max="50"
+                    aria-live="polite"
+                    aria-label="Number of travellers"
+                  >
+                  <button
+                    type="button"
+                    id="pd-btn-plus"
+                    class="pd-counter-btn"
+                    aria-label="Increase traveller count"
+                  >&plus;</button>
+                </div>
+              </div>
+
+              <!-- Itemized Total Calculation -->
+              <div class="pd-total-calculation-box">
+                <div class="pd-calc-row">
+                  <span id="pd-calc-breakdown">PKR 0 &times; 1 traveller</span>
+                  <span id="pd-calc-subtotal" class="pd-calc-subtotal">PKR 0</span>
+                </div>
+                <div class="pd-calc-row pd-calc-row--total">
+                  <span class="pd-total-label">Total Price</span>
+                  <strong class="pd-total-value" id="pd-total-price">PKR 0</strong>
+                </div>
+                <p class="pd-calc-note">
+                  Taxes, permits, and basic travel insurance are included in the quoted rate.
+                </p>
+              </div>
+
+              <!-- Action Buttons: Book Now & Save Package -->
+              <div class="pd-actions-wrapper">
+                <button type="button" id="pd-btn-book-now" class="pd-btn pd-btn--primary">
+                  <span>Book Now</span>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+
+                <button type="button" id="pd-btn-save-package" class="pd-btn pd-btn--secondary">
+                  <svg id="pd-save-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                  <span id="pd-save-btn-text">Save Package</span>
+                </button>
+              </div>
+
+              <div class="pd-booking-trust">
+                <div class="pd-trust-item">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Free cancellation up to 7 days before departure</span>
+                </div>
+                <div class="pd-trust-item">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Verified English &amp; Urdu speaking mountain guides</span>
+                </div>
+              </div>
+
+            </div>
+          </aside>
+
+        </div>
+      </article>
+
+      <!-- Graceful Fallback / Invalid Package State -->
+      <section id="pd-not-found-state" class="pd-not-found-card" hidden aria-live="polite">
+        <div class="pd-not-found-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <h2 class="pd-not-found-title">Tour Package Not Found</h2>
+        <p class="pd-not-found-text">
+          We could not find the requested tour package. It may have been updated, or the link may be incomplete.
+        </p>
+        <div class="pd-not-found-actions">
+          <a href="tour-packages.html" class="pd-btn pd-btn--primary">
+            Browse All Tour Packages
+          </a>
+        </div>
+      </section>
+
+      <!-- NoScript Fallback -->
+      <noscript>
+        <div class="pd-not-found-card">
+          <h2 class="pd-not-found-title">JavaScript Required</h2>
+          <p class="pd-not-found-text">
+            Please enable JavaScript in your browser to view package details, itineraries, and live price calculations.
+          </p>
+          <a href="tour-packages.html" class="pd-btn pd-btn--primary">
+            Back to Tour Packages
+          </a>
+        </div>
+      </noscript>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer Placeholder -->
+  <div id="site-footer"></div>
+
+  <!--
+    Required shared JavaScript dependencies for all Highland Horizons pages:
+    1. Bootstrap 5.3 Bundle JS (includes Popper for dropdowns and mobile collapse)
+    2. assets/js/layout.js (loads components/header.html and components/footer.html via fetch())
+  -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="../assets/js/layout.js"></script>
+
+  <!-- Page-specific script -->
+  <script src="../js/package-details.js" defer></script>
+</body>
+</html>

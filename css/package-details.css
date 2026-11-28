@@ -1,0 +1,719 @@
+/* ==========================================================================
+   Highland Horizons - Package Details Page Stylesheet
+   Author: Asher Maqsood (26i-3246)
+   Follows brand palette: Forest green (#1B5E3B), Sage green (#A7C957),
+   Sand beige (#D9B382), Cream (#F8F6ED), Text (#26332E)
+   ========================================================================== */
+
+:root {
+  /* Aligned with Highland Horizons Brand Palette */
+  --pd-forest-green: #1B5E3B;
+  --pd-forest-dark: #14472D;
+  --pd-sage-green: #A7C957;
+  --pd-sage-light: #EBF3D8;
+  --pd-sand-beige: #D9B382;
+  --pd-sand-light: #F7EFE6;
+  --pd-earthy-orange: #C97B3D;
+  --pd-cream-bg: #F8F6ED;
+  --pd-surface: #FFFFFF;
+  --pd-text-main: #26332E;
+  --pd-text-muted: #52635C;
+  --pd-border: #DDE5E0;
+  --pd-border-focus: #1B5E3B;
+  --pd-shadow-card: 0 4px 18px rgba(27, 94, 59, 0.08);
+  --pd-shadow-hover: 0 8px 26px rgba(27, 94, 59, 0.14);
+
+  /* Fonts */
+  --pd-font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --pd-font-serif: var(--hh-font-serif, "Libre Baskerville", Georgia, serif);
+
+  /* Radii */
+  --pd-radius-sm: 6px;
+  --pd-radius-md: 12px;
+  --pd-radius-lg: 18px;
+}
+
+/* Page baseline */
+.pd-body {
+  margin: 0;
+  background-color: var(--pd-cream-bg);
+  color: var(--pd-text-main);
+  font-family: var(--pd-font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-main {
+  flex: 1 0 auto;
+  padding: 1.5rem 1rem 3.5rem;
+}
+
+.pd-container {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Accessible focus ring */
+.pd-main a:focus-visible,
+.pd-main button:focus-visible,
+.pd-main input:focus-visible {
+  outline: 3px solid var(--pd-forest-green);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Back to Tour Packages Navigation
+   -------------------------------------------------------------------------- */
+.pd-nav-bar {
+  margin-bottom: 1.25rem;
+}
+
+.pd-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--pd-forest-green);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  background-color: transparent;
+  border-radius: var(--pd-radius-sm);
+  transition: all 0.2s ease;
+}
+
+.pd-back-link:hover {
+  background-color: rgba(27, 94, 59, 0.08);
+  color: var(--pd-forest-dark);
+  text-decoration: none;
+}
+
+.pd-back-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.pd-back-link:hover .pd-back-icon {
+  transform: translateX(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   Notification Banner (Saved Package Feedback)
+   -------------------------------------------------------------------------- */
+.pd-notification {
+  margin-bottom: 1.5rem;
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--pd-radius-md);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  animation: pdFadeIn 0.25s ease-out;
+}
+
+.pd-notification--success {
+  background-color: #EBF8F1;
+  color: #14532D;
+  border: 1px solid #A7E0BA;
+}
+
+.pd-notification--info {
+  background-color: #FFF9EE;
+  color: #7A4B10;
+  border: 1px solid #F5D399;
+}
+
+.pd-notification-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  line-height: 1;
+}
+
+@keyframes pdFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   Header: Title & Badges
+   -------------------------------------------------------------------------- */
+.pd-header-section {
+  margin-bottom: 1.75rem;
+}
+
+.pd-header-top {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pd-destination-tag {
+  background-color: var(--pd-forest-green);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.pd-duration-pill {
+  background-color: var(--pd-sage-light);
+  color: var(--pd-forest-dark);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+}
+
+.pd-package-title {
+  margin: 0;
+  font-family: var(--pd-font-serif);
+  font-size: clamp(1.85rem, 3.8vw, 2.6rem);
+  font-weight: 700;
+  color: var(--pd-forest-green);
+  line-height: 1.2;
+}
+
+/* --------------------------------------------------------------------------
+   Main Layout Grid: 2 Columns
+   -------------------------------------------------------------------------- */
+.pd-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .pd-details-grid {
+    grid-template-columns: minmax(0, 1.7fr) minmax(320px, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* Left Column Cards */
+.pd-visual-card {
+  border-radius: var(--pd-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--pd-shadow-card);
+  background-color: var(--pd-surface);
+  margin-bottom: 1.75rem;
+  border: 1px solid var(--pd-border);
+}
+
+.pd-hero-img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.pd-card {
+  background-color: var(--pd-surface);
+  border-radius: var(--pd-radius-lg);
+  border: 1px solid var(--pd-border);
+  box-shadow: var(--pd-shadow-card);
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.pd-section-title {
+  font-family: var(--pd-font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--pd-forest-green);
+  margin: 0 0 1rem;
+}
+
+.pd-package-description {
+  font-size: 1.05rem;
+  color: var(--pd-text-main);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* 4-Item Amenities Grid */
+.pd-amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--pd-border);
+}
+
+.pd-amenity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem;
+  background-color: var(--pd-cream-bg);
+  border-radius: var(--pd-radius-md);
+  border: 1px solid rgba(27, 94, 59, 0.08);
+}
+
+.pd-amenity-icon {
+  flex-shrink: 0;
+  color: var(--pd-forest-green);
+  background-color: #FFFFFF;
+  padding: 0.45rem;
+  border-radius: var(--pd-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.pd-amenity-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-amenity-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--pd-text-muted);
+  font-weight: 600;
+}
+
+.pd-amenity-val {
+  font-size: 0.925rem;
+  color: var(--pd-text-main);
+  font-weight: 600;
+  margin-top: 0.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   Day-by-Day Itinerary Timeline
+   -------------------------------------------------------------------------- */
+.pd-itinerary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pd-itinerary-badge {
+  background-color: var(--pd-sand-light);
+  color: var(--pd-earthy-orange);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 123, 61, 0.2);
+}
+
+.pd-itinerary-lead {
+  font-size: 0.9375rem;
+  color: var(--pd-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.pd-itinerary-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.pd-itinerary-day {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.pd-itinerary-day:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 17px;
+  width: 2px;
+  bottom: -20px;
+  background-color: var(--pd-border);
+}
+
+.pd-day-badge {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--pd-forest-green);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 6px rgba(27, 94, 59, 0.25);
+  z-index: 1;
+}
+
+.pd-day-content {
+  flex: 1;
+  background-color: #FAFCF9;
+  border: 1px solid var(--pd-border);
+  border-radius: var(--pd-radius-md);
+  padding: 1rem 1.25rem;
+}
+
+.pd-day-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--pd-forest-green);
+  margin: 0 0 0.35rem;
+}
+
+.pd-day-desc {
+  font-size: 0.9rem;
+  color: var(--pd-text-muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   Right Column: Sticky Booking & Price Calculator Card
+   -------------------------------------------------------------------------- */
+.pd-sidebar-column {
+  position: static;
+}
+
+@media (min-width: 992px) {
+  .pd-sidebar-column {
+    position: sticky;
+    top: 95px;
+  }
+}
+
+.pd-booking-card {
+  background-color: var(--pd-surface);
+  border-radius: var(--pd-radius-lg);
+  border: 2px solid var(--pd-forest-green);
+  box-shadow: var(--pd-shadow-hover);
+  padding: 1.75rem;
+}
+
+.pd-booking-card-title {
+  font-family: var(--pd-font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--pd-forest-green);
+  margin: 0 0 1rem;
+}
+
+.pd-price-unit-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pd-price-unit-label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--pd-text-muted);
+  font-weight: 600;
+}
+
+.pd-price-unit-amount {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--pd-forest-green);
+  line-height: 1.15;
+}
+
+.pd-divider {
+  border: 0;
+  border-top: 1px solid var(--pd-border);
+  margin: 1.25rem 0;
+}
+
+/* Traveller Counter */
+.pd-counter-section {
+  margin-bottom: 1.25rem;
+}
+
+.pd-counter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.pd-counter-label {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--pd-text-main);
+  margin: 0;
+}
+
+.pd-counter-subtext {
+  font-size: 0.775rem;
+  color: var(--pd-text-muted);
+}
+
+.pd-counter-controls {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--pd-border);
+  border-radius: var(--pd-radius-md);
+  background-color: var(--pd-cream-bg);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.pd-counter-controls:focus-within {
+  border-color: var(--pd-forest-green);
+}
+
+.pd-counter-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--pd-forest-green);
+  font-size: 1.4rem;
+  font-weight: 600;
+  width: 48px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.pd-counter-btn:hover:not(:disabled) {
+  background-color: rgba(27, 94, 59, 0.12);
+  color: var(--pd-forest-dark);
+}
+
+.pd-counter-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pd-counter-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--pd-text-main);
+  padding: 0.5rem;
+  min-width: 50px;
+  -moz-appearance: textfield;
+}
+
+.pd-counter-input::-webkit-outer-spin-button,
+.pd-counter-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Total Price Box */
+.pd-total-calculation-box {
+  background-color: var(--pd-cream-bg);
+  border-radius: var(--pd-radius-md);
+  padding: 1rem 1.125rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--pd-border);
+}
+
+.pd-calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--pd-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.pd-calc-subtotal {
+  font-weight: 600;
+  color: var(--pd-text-main);
+}
+
+.pd-calc-row--total {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--pd-border);
+  margin-bottom: 0.4rem;
+}
+
+.pd-total-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pd-text-main);
+}
+
+.pd-total-value {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--pd-forest-green);
+}
+
+.pd-calc-note {
+  font-size: 0.75rem;
+  color: var(--pd-text-muted);
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
+}
+
+/* Action Buttons */
+.pd-actions-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--pd-radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.pd-btn--primary {
+  background-color: var(--pd-forest-green);
+  color: #FFFFFF;
+}
+
+.pd-btn--primary:hover {
+  background-color: var(--pd-forest-dark);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(27, 94, 59, 0.25);
+}
+
+.pd-btn--secondary {
+  background-color: transparent;
+  color: var(--pd-forest-green);
+  border: 1.5px solid var(--pd-forest-green);
+}
+
+.pd-btn--secondary:hover {
+  background-color: rgba(27, 94, 59, 0.08);
+  color: var(--pd-forest-dark);
+}
+
+.pd-btn--saved {
+  background-color: var(--pd-sand-light);
+  color: #7A4B10;
+  border-color: #D9B382;
+}
+
+.pd-btn--saved:hover {
+  background-color: #F0DFC9;
+  color: #5D370A;
+  border-color: #C97B3D;
+}
+
+/* Trust Signals */
+.pd-booking-trust {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--pd-border);
+}
+
+.pd-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--pd-text-muted);
+}
+
+.pd-trust-item svg {
+  flex-shrink: 0;
+  color: var(--pd-forest-green);
+}
+
+/* --------------------------------------------------------------------------
+   Graceful Fallback / Not Found State
+   -------------------------------------------------------------------------- */
+.pd-not-found-card {
+  text-align: center;
+  background-color: var(--pd-surface);
+  border-radius: var(--pd-radius-lg);
+  border: 1px solid var(--pd-border);
+  box-shadow: var(--pd-shadow-card);
+  padding: 3rem 1.5rem;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.pd-not-found-icon {
+  color: var(--pd-earthy-orange);
+  margin-bottom: 1rem;
+}
+
+.pd-not-found-title {
+  font-family: var(--pd-font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--pd-forest-green);
+  margin-bottom: 0.75rem;
+}
+
+.pd-not-found-text {
+  font-size: 1rem;
+  color: var(--pd-text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.pd-not-found-actions {
+  display: inline-block;
+  min-width: 220px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 576px) {
+  .pd-main {
+    padding: 1rem 0.75rem 2.5rem;
+  }
+
+  .pd-card,
+  .pd-booking-card {
+    padding: 1.25rem;
+  }
+
+  .pd-package-title {
+    font-size: 1.6rem;
+  }
+
+  .pd-amenities-grid {
+    grid-template-columns: 1fr;
+  }
+}
