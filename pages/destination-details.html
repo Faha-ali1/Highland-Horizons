@@ -204,6 +204,7 @@
     <!-- 1. Hero Section -->
     <section class="hh-detail-hero" aria-labelledby="heroHeading">
       <img
+        id="heroImage"
         src="../assets/images/hunza.jpg"
         alt="Turquoise river winding past steep mountains, tall green trees, and a bridge in Hunza Valley"
         class="hh-detail-hero-img"
@@ -211,7 +212,7 @@
       <div class="hh-detail-hero-overlay" aria-hidden="true"></div>
       <div class="hh-detail-hero-content">
         <h1 id="heroHeading" class="hh-detail-hero-title">Hunza Valley</h1>
-        <p class="hh-detail-hero-subtitle">Where nature meets peace</p>
+        <p id="heroSubtitle" class="hh-detail-hero-subtitle">Where Nature Meets Peace</p>
       </div>
     </section>
 
@@ -221,13 +222,19 @@
           <a href="destinations.html" class="hh-back-link">&larr; Back to Destinations</a>
         </nav>
 
-        <!-- 2. About Hunza -->
-        <section class="hh-detail-section" aria-labelledby="aboutHunzaHeading">
+        <!-- Friendly notice shown only if an invalid ?destination= parameter is entered -->
+        <div id="destinationFallbackNotice" class="hh-fallback-notice" role="status" hidden>
+          The requested destination was not found, so we are showing <strong>Hunza Valley</strong>.
+          You can also browse all places on the <a href="destinations.html">Destinations page</a>.
+        </div>
+
+        <!-- 2. About Destination -->
+        <section class="hh-detail-section" aria-labelledby="aboutHeading">
           <div class="hh-section-header">
-            <h2 id="aboutHunzaHeading" class="hh-section-title">About Hunza</h2>
+            <h2 id="aboutHeading" class="hh-section-title">About Hunza Valley</h2>
           </div>
 
-          <div class="hh-about-card">
+          <div id="aboutContent" class="hh-about-card">
             <p class="hh-about-text">
               Nestled in the Karakoram mountains of Gilgit-Baltistan, Hunza Valley is renowned for its
               snow-dusted peaks, bright turquoise waters, and serene terraced villages. Framed by towering
@@ -261,8 +268,8 @@
                 </div>
                 <div>
                   <span class="hh-info-label">Best Time to Visit</span>
-                  <h3 class="hh-info-value">Spring / Summer</h3>
-                  <p class="hh-info-note">
+                  <h3 id="bestTimeValue" class="hh-info-value">Spring / Summer</h3>
+                  <p id="bestTimeNote" class="hh-info-note">
                     Ideal months for clear mountain views, apricot blossoms, and open highland roads.
                   </p>
                 </div>
@@ -279,8 +286,8 @@
                 </div>
                 <div>
                   <span class="hh-info-label">Region</span>
-                  <h3 class="hh-info-value">Gilgit-Baltistan</h3>
-                  <p class="hh-info-note">
+                  <h3 id="regionValue" class="hh-info-value">Gilgit-Baltistan</h3>
+                  <p id="regionNote" class="hh-info-note">
                     Located in Northern Pakistan along the scenic Karakoram Highway.
                   </p>
                 </div>
@@ -289,34 +296,21 @@
           </div>
         </section>
 
-        <!-- 4. Places to Explore -->
+        <!-- 4. Places to Explore (populated by assets/js/destination-details.js) -->
         <section class="hh-detail-section" aria-labelledby="placesToExploreHeading">
           <div class="hh-section-header">
             <h2 id="placesToExploreHeading" class="hh-section-title">Places to Explore</h2>
           </div>
 
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Place 1: Attabad Lake -->
+          <div id="placesGrid" class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <article class="hh-place-card">
                 <div class="hh-place-media">
-                  <svg
-                    class="hh-place-illustration"
-                    viewBox="0 0 400 240"
-                    preserveAspectRatio="xMidYMid slice"
-                    role="img"
-                    aria-label="Scenic illustration of Attabad Lake with bright turquoise water between steep mountains"
+                  <img
+                    src="../assets/images/hunza-attabad.jpg"
+                    alt="Bright turquoise water of Attabad Lake surrounded by steep rocky mountains in Hunza"
+                    class="hh-place-img"
                   >
-                    <rect width="400" height="240" fill="#D5E7F2" />
-                    <path d="M0 135 L85 45 L165 115 L255 38 L345 105 L400 72 L400 155 L0 155 Z" fill="#8C9C89" />
-                    <path d="M0 150 L70 72 L145 135 L235 65 L320 130 L400 95 L400 165 L0 165 Z" fill="#3F4F3A" />
-                    <path d="M0 150 Q120 142 215 152 T400 148 L400 240 L0 240 Z" fill="#3B9AB2" />
-                    <path d="M30 180 Q135 173 245 182 T390 176" stroke="#A7C7E7" stroke-width="3" fill="none" stroke-linecap="round" />
-                    <path d="M70 206 Q190 198 310 208" stroke="#F8F6ED" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7" />
-                    <path d="M168 173 L218 173 L208 182 L176 182 Z" fill="#C97B3D" />
-                    <line x1="193" y1="158" x2="193" y2="173" stroke="#1B5E3B" stroke-width="2" />
-                    <polygon points="193,158 209,166 193,169" fill="#F8F6ED" />
-                  </svg>
                 </div>
                 <div class="hh-place-body">
                   <h3 class="hh-place-title">Attabad Lake</h3>
@@ -327,31 +321,14 @@
               </article>
             </div>
 
-            <!-- Place 2: Passu Cones -->
             <div class="col">
               <article class="hh-place-card">
                 <div class="hh-place-media">
-                  <svg
-                    class="hh-place-illustration"
-                    viewBox="0 0 400 240"
-                    preserveAspectRatio="xMidYMid slice"
-                    role="img"
-                    aria-label="Scenic illustration of Passu Cones jagged mountain spires above green valley trees"
+                  <img
+                    src="../assets/images/hunza-passu.jpg"
+                    alt="Jagged cathedral-shaped peaks of Passu Cones rising above Upper Hunza"
+                    class="hh-place-img"
                   >
-                    <rect width="400" height="240" fill="#CFE4F2" />
-                    <circle cx="325" cy="54" r="22" fill="#F8F6ED" opacity="0.9" />
-                    <polygon points="15,175 72,64 125,175" fill="#4A5D46" />
-                    <polygon points="75,175 142,32 205,175" fill="#3F4F3A" />
-                    <polygon points="145,175 212,24 275,175" fill="#2F422D" />
-                    <polygon points="220,175 282,52 342,175" fill="#3F4F3A" />
-                    <polygon points="288,175 348,74 398,175" fill="#586B53" />
-                    <polygon points="142,32 128,62 142,56 155,64" fill="#F8F6ED" />
-                    <polygon points="212,24 196,58 212,50 228,60" fill="#F8F6ED" />
-                    <polygon points="282,52 269,78 282,72 295,80" fill="#F8F6ED" />
-                    <path d="M0 168 Q130 154 250 168 T400 162 L400 240 L0 240 Z" fill="#A7C957" />
-                    <path d="M0 185 Q180 174 400 188 L400 240 L0 240 Z" fill="#1B5E3B" />
-                    <path d="M60 240 Q150 205 240 190 Q285 182 335 178" stroke="#D9B382" stroke-width="8" fill="none" stroke-linecap="round" />
-                  </svg>
                 </div>
                 <div class="hh-place-body">
                   <h3 class="hh-place-title">Passu Cones</h3>
@@ -362,34 +339,14 @@
               </article>
             </div>
 
-            <!-- Place 3: Karimabad -->
             <div class="col">
               <article class="hh-place-card">
                 <div class="hh-place-media">
-                  <svg
-                    class="hh-place-illustration"
-                    viewBox="0 0 400 240"
-                    preserveAspectRatio="xMidYMid slice"
-                    role="img"
-                    aria-label="Scenic illustration of Karimabad town and historic stone fort beneath snowy peaks"
+                  <img
+                    src="../assets/images/hunza-karimabad.jpg"
+                    alt="Hillside town of Karimabad overlooking green orchards and snow-covered mountain peaks"
+                    class="hh-place-img"
                   >
-                    <rect width="400" height="240" fill="#DCE9F2" />
-                    <path d="M0 140 L95 55 L195 118 L295 36 L400 120 L400 165 L0 165 Z" fill="#899B87" />
-                    <polygon points="295,36 266,68 295,60 326,70" fill="#F8F6ED" />
-                    <path d="M0 148 Q160 125 270 145 L400 135 L400 240 L0 240 Z" fill="#6F8C58" />
-                    <path d="M0 182 Q190 168 400 184 L400 240 L0 240 Z" fill="#A7C957" />
-                    <!-- Historic hillside fort silhouette -->
-                    <rect x="148" y="96" width="104" height="50" rx="2" fill="#F8F6ED" stroke="#3F4F3A" stroke-width="2" />
-                    <rect x="138" y="108" width="24" height="38" fill="#D9B382" stroke="#3F4F3A" stroke-width="2" />
-                    <rect x="238" y="108" width="24" height="38" fill="#D9B382" stroke="#3F4F3A" stroke-width="2" />
-                    <rect x="184" y="80" width="32" height="18" fill="#C97B3D" />
-                    <rect x="166" y="112" width="14" height="16" fill="#3F4F3A" />
-                    <rect x="193" y="112" width="14" height="16" fill="#3F4F3A" />
-                    <rect x="220" y="112" width="14" height="16" fill="#3F4F3A" />
-                    <circle cx="80" cy="196" r="14" fill="#1B5E3B" />
-                    <circle cx="105" cy="202" r="11" fill="#1B5E3B" />
-                    <circle cx="318" cy="194" r="15" fill="#1B5E3B" />
-                  </svg>
                 </div>
                 <div class="hh-place-body">
                   <h3 class="hh-place-title">Karimabad</h3>
@@ -402,13 +359,13 @@
           </div>
         </section>
 
-        <!-- 5. Things to Do -->
+        <!-- 5. Things to Do (populated by assets/js/destination-details.js) -->
         <section class="hh-detail-section" aria-labelledby="thingsToDoHeading">
           <div class="hh-section-header">
             <h2 id="thingsToDoHeading" class="hh-section-title">Things to Do</h2>
           </div>
 
-          <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div id="thingsToDoGrid" class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <div class="hh-activity-card">
                 <div class="hh-activity-icon-box" aria-hidden="true">
@@ -457,9 +414,9 @@
         </section>
 
         <!-- 6. Gallery Button (placeholder href="#" until pages/gallery.html is created) -->
-        <section class="hh-gallery-cta" aria-label="Hunza Valley gallery link">
+        <section id="galleryCtaSection" class="hh-gallery-cta" aria-label="Hunza Valley gallery link">
           <a
-            id="hunzaGalleryLink"
+            id="destinationGalleryLink"
             href="#"
             data-hh-page="gallery"
             class="btn hh-gallery-btn"
@@ -571,5 +528,6 @@
     crossorigin="anonymous"
   ></script>
   <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/destination-details.js"></script>
 </body>
 </html>

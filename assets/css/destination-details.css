@@ -92,6 +92,28 @@ main {
   margin-bottom: 1.75rem;
 }
 
+.hh-fallback-notice {
+  background-color: #ffffff;
+  border: 1px solid var(--hh-sand-beige);
+  border-left: 4px solid var(--hh-earthy-orange);
+  border-radius: 10px;
+  padding: 0.9rem 1.25rem;
+  margin-bottom: 1.75rem;
+  color: var(--hh-olive-green);
+  font-size: 0.95rem;
+  box-shadow: 0 3px 10px rgba(27, 94, 59, 0.05);
+}
+
+.hh-fallback-notice a {
+  color: var(--hh-forest-green);
+  font-weight: 700;
+}
+
+.hh-fallback-notice a:hover,
+.hh-fallback-notice a:focus-visible {
+  color: var(--hh-earthy-orange);
+}
+
 .hh-back-link {
   display: inline-flex;
   align-items: center;
@@ -209,7 +231,7 @@ main {
 }
 
 /* ==========================================================================
-   4. PLACES TO EXPLORE CARDS (3 cards with scenic illustrations)
+   4. PLACES TO EXPLORE CARDS (3 cards with local destination photographs)
    ========================================================================== */
 
 .hh-place-card {
@@ -230,10 +252,37 @@ main {
   overflow: hidden;
 }
 
+.hh-place-img,
 .hh-place-illustration {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
+}
+
+.hh-place-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 1rem;
+  text-align: center;
+  background: linear-gradient(155deg, rgba(167, 201, 87, 0.28) 0%, rgba(217, 179, 130, 0.35) 100%);
+  color: var(--hh-forest-green);
+}
+
+.hh-place-placeholder-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.hh-place-placeholder-note {
+  font-size: 0.78rem;
+  color: var(--hh-olive-green);
 }
 
 .hh-place-body {
